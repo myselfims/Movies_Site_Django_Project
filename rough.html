@@ -1,0 +1,92 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/js.js"></script>
+    <title>Movies Menia</title>
+</head>
+<style>
+    .likebtn{
+        background-color:;
+    }
+</style>
+<body >
+    <nav>
+        <div class="nav">
+            <a href="">Home</a>
+            <a href="">Bollywood</a>
+            <a href="">Hollywood</a>
+            <a href="">Trending</a>
+            <a href="">Category</a>
+
+            <div class="searchdiv">
+                <input placeholder = "search a movie" type="text">
+                <button class='btn'>Go</button>
+            </div>
+            <div class="logoutdiv">
+                <select name="" id="">
+                    <option value="" selected hidden>myselfims</option>
+                    <button>logout</button>
+                    <option value="">logout</option>
+                </select>
+            </div>
+            <button onclick="ShowModal()" id='loginbtn' class='btn'>Login</button>
+        </div>
+    </nav>
+
+    <main>
+        <div id="container" class="container">
+            <!-- {% for movie in movies %} -->
+                <div class="postercard">
+                    <div class="ratings">
+                        <label for="">&#11088; 8.1</label>
+                        <button class="likebtn">&#9825;</button>
+                    </div>
+                    <img src="/static/iron man.jpg" alt="Poster">
+                    <h1>Iron man 2019</h1>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla amet aperiam sapiente impedit nihil exercitationem doloribus atque aliquid accusantium similique!</p>
+                </div>
+            <!-- {% endfor %} -->
+        </div>
+
+
+        <!-- Signin Modal -->
+
+        <div id='modalcontainer' class="modalcontainer">
+            <div class="modalhead">
+                <button onclick="ShowLogin()" class="btn" id="modalloginbtn">Login</button>
+                <button onclick="ShowSignup()" class="btn" id="modalsignupbtn">Signup</button>
+                <button onclick="CloseModal()" id="closemodal" class="btn">X</button>
+            </div>
+            <div class="modalform">
+                <div class="inputboxdiv">
+                <label for="">Username</label>
+                <input type="text" placeholder="Username">
+                </div>
+
+                <div id="emailinputdiv" class="inputboxdiv">
+                <label for="">Email</label>
+                <input id="emailinput" disabled type="text" placeholder="Email">
+                </div>
+
+                <div class="inputboxdiv">
+                <label for="">Password</label>
+                <input type="password" placeholder="Password">
+                </div>
+                <button class="btn">Submit</button>
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+
+
+
+</body>
+</html>

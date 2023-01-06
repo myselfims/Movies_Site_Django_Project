@@ -1,0 +1,123 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'styles.css' %}">
+    <script src="{%static 'js.js' %}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <title>Movies Menia</title>
+</head>
+
+<body onload='CheckLogin()'>
+    <nav>
+        <div class="nav">
+            <a href="">Home</a>
+            <a href="">Bollywood</a>
+            <a href="">Hollywood</a>
+            <a href="">Trending</a>
+            <a href="" id='favorite'>favorite</a>
+
+            <div class="searchdiv">
+                <input placeholder = "search a movie" type="text">
+                <button class='btn'>Go</button>
+            </div>
+            {% comment %} {% if user != 'none' %}
+            <div id='logoutdiv' class="logoutdiv">
+                <select onchange="Logout()" name="" id="">
+                    <option id='usernamelabel' value="" selected hidden>{{user.username}}</option>
+                    <option onclick="Logout()" value="">logout</option>
+                </select>
+            </div>
+            {% else %}
+            <button onclick="ShowModal()" id='loginbtn' class='btn'>Login</button>
+            {% endif %} {% endcomment %}
+            
+            {% comment %} auth code for ajax {% endcomment %}
+            
+            <div id='logoutdivajax' class="logoutdiv">
+                
+                    <label id='usernamelabelajax' >{{user.username}}</label>
+                    <button onclick="Logout()" class='btn'>logout</button>
+       
+            </div>
+
+            <button id='loginbtnajax' onclick="ShowModal()" class='btn'>Login</button>
+
+            {% comment %} auth code for ajax {% endcomment %}
+        </div>
+    </nav>
+
+    <main>
+        <div id="container" class="container">
+            <div id='progressbar' class="progressbar">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            {% for movie in movies %}
+                <div class="postercard">
+                    <div class="ratings">
+                        <label for="">&#11088; {{movie.rating}}</label>
+                        
+                        {% if movie.id in liked_movies %}
+                        <button onclick="LikeMovie('{{movie.id}}','{{user}}')" class='likebtn' id="likebtn{{movie.id}}">&#10084;</button>
+                        {% else %}
+                        <button onclick="LikeMovie('{{movie.id}}','{{user}}')" class='likebtn' id="likebtn{{movie.id}}">&#9825;</button>
+                        {% endif %}
+                        
+                    </div>
+                    <img src="{{movie.image}}" alt="Poster">
+                    <h1>{{movie.title}} {{movie.year}}</h1>
+                    <p>{{movie.description}}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+
+         <!-- Signin Modal -->
+
+         <div id='modalcontainer' class="modalcontainer">
+            <div class="modalhead">
+                <button onclick="ShowLogin()" class="btn" id="modalloginbtn">Login</button>
+                <button onclick="ShowSignup()" class="btn" id="modalsignupbtn">Signup</button>
+                <button onclick="CloseModal()" id="closemodal" class="btn">X</button>
+            </div>
+            <div id="progressbarsignup" class="progressbar">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="modalform">
+                <div class="inputboxdiv">
+                <label for="">Username</label>
+                <input id='usernameinput' type="text" placeholder="Username">
+                </div>
+
+                <div id="emailinputdiv" class="inputboxdiv">
+                <label for="">Email</label>
+                <input id="emailinput"  type="text" placeholder="Email">
+                </div>
+
+                <div class="inputboxdiv">
+                <label for="">Password</label>
+                <input id='passwordinput' type="password" placeholder="Password">
+                </div>
+                <button type='button' onclick='SubmitForm()' class="btn">Submit</button>
+            </div>
+        </div>
+    </main>
+
+
+
+
+</body>
+</html>
