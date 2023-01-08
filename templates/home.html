@@ -15,15 +15,17 @@
     <nav>
         <div class="nav">
             <a href="/">Home</a>
-            <a href="">Bollywood</a>
-            <a href="">Hollywood</a>
-            <a href="">Trending</a>
+            <a href="{%url 'popular' %}">Popular</a>
+            <a href="{%url 'upcoming' %}">Upcoming</a>
+            <a href="{%url 'top_rated' %}">Top Rated</a>
             <a href="{%url 'favorite' %}" id='favorite'>favorite</a>
 
+            <form action="{%url 'search' %}" method='post'> {% csrf_token %}
             <div class="searchdiv">
-                <input placeholder = "search a movie" type="text">
+                <input name='query' placeholder = "search a movie" type="text">
                 <button class='btn'>Go</button>
             </div>
+            </form>
             {% comment %} {% if user != 'none' %}
             <div id='logoutdiv' class="logoutdiv">
                 <select onchange="Logout()" name="" id="">
@@ -51,6 +53,7 @@
     </nav>
 
     <main>
+        {% block detailtetemplatebody %}
         <div id="container" class="container">
             <div id='progressbar' class="progressbar">
                 <div class="bar"></div>
@@ -62,30 +65,36 @@
             </div>
             {% if movies %}
             {% for movie in movies %}
+            
+            {% block postercard %}
+                
                 <div class="postercard">
                     <div class="ratings">
-                        <label for="">&#11088; {{movie.rating}}</label>
+                        <label for="">&#11088; {{movie.vote_average}}</label>
                         
                         {% if movie.id in liked_movies %}
                         <button onclick="LikeMovie('{{movie.id}}','{{user}}')" class='likebtn' id="likebtn{{movie.id}}">&#10084;</button>
                         {% else %}
                         <button onclick="LikeMovie('{{movie.id}}','{{user}}')" class='likebtn' id="likebtn{{movie.id}}">&#9825;</button>
                         {% endif %}
-                        
                     </div>
-                    <img src="{{movie.image}}" alt="Poster">
+                    <a class='movietitleheading' href="{%url 'movie_detail' id=movie.id %}">   
+                    <img src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt="Poster">
                     <h1>{{movie.title}} {{movie.year}}</h1>
                     <p>{{movie.description}}</p>
+                    </a>
                 </div>
+                {% endblock postercard %}
+            
             {% endfor %}
             {% else %}
             <div class="subcontainer">
                 <img id="unhappyheart" src="https://cdn1.iconfinder.com/data/icons/hearts-9/509/love-heart_146-512.png" alt="">
-                <h1>You don't have favorite yet!</h1>
+                <h1 id='notfoundheading'>You don't have favorite yet!</h1>
             </div>
             {% endif %}
         </div>
-
+        {% endblock detailtetemplatebody %}
 
          <!-- Signin Modal -->
 

@@ -1,0 +1,23 @@
+{% extends 'home.html' %}
+
+{% block postercard %}
+{% if movie.poster_path != None %}
+<div class="postercard">
+    <div class="ratings">
+        <label for="">&#11088; {{movie.vote_average}}</label>
+        
+        {% if movie.id in liked_movies %}
+        <button onclick="LikeMovie('{{movie.id}}','{{user}}')" class='likebtn' id="likebtn{{movie.id}}">&#10084;</button>
+        {% else %}
+        <button onclick="LikeMovie('{{movie.id}}','{{user}}')" class='likebtn' id="likebtn{{movie.id}}">&#9825;</button>
+        {% endif %}
+        
+    </div>
+    <a class='movietitleheading' href="{%url 'movie_detail' id=movie.id %}"> 
+    <img src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt="Poster">
+    <h1>{{movie.title}} {{movie.year}}</h1>
+    <p>{{movie.description}}</p>
+    </a>
+</div>
+{% endif %}
+{% endblock postercard %}

@@ -1,17 +1,16 @@
-
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/styles.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/styles.css" />
     <script src="/static/js.js"></script>
     <title>Movies Menia</title>
 </head>
-<style>
-    
-</style>
-<body >
+<style></style>
+
+<body>
     <nav>
         <div class="nav">
             <a href="">Home</a>
@@ -21,8 +20,8 @@
             <a href="">Category</a>
 
             <div class="searchdiv">
-                <input placeholder = "search a movie" type="text">
-                <button class='btn'>Go</button>
+                <input placeholder="search a movie" type="text" />
+                <button class="btn">Go</button>
             </div>
             <div class="logoutdiv">
                 <select name="" id="">
@@ -31,14 +30,14 @@
                     <option value="">logout</option>
                 </select>
             </div>
-            <button onclick="ShowModal()" id='loginbtn' class='btn'>Login</button>
+            <button onclick="ShowModal()" id="loginbtn" class="btn">Login</button>
         </div>
     </nav>
 
     <main>
-        <div id="container" class="container">
+        <div style="background-image: url('https://image.tmdb.org/t/p/original//u6CmMSCuSA1GMn8o9Y2e5hNFlsX.jpg" id="moviesdetailcontainer" class="container">
             <!-- {% for movie in movies %} -->
-                <!-- <div class="postercard">
+            <!-- <div class="postercard">
                     <div class="ratings">
                         <label for="">&#11088; 8.1</label>
                         <button class="likebtn">&#9825;</button>
@@ -49,47 +48,74 @@
                 </div> -->
             <!-- {% endfor %} -->
 
-            <div class="subcontainer">
-                <img id="unhappyheart" src="https://cdn1.iconfinder.com/data/icons/hearts-9/509/love-heart_146-512.png" alt="">
-                <h1>You don't have favorite yet!</h1>
-            </div>
-        </div>
+            <div 
+                class="subcontainer">
+                <div class="contentdiv">
+                    <img src="https://image.tmdb.org/t/p/original//21sC2assImQIYCEDA84Qh9d1RsK.jpg" alt="" />
 
-
-        <!-- Signin Modal -->
-
-        <div id='modalcontainer' class="modalcontainer">
-            <div class="modalhead">
-                <button onclick="ShowLogin()" class="btn" id="modalloginbtn">Login</button>
-                <button onclick="ShowSignup()" class="btn" id="modalsignupbtn">Signup</button>
-                <button onclick="CloseModal()" id="closemodal" class="btn">X</button>
-            </div>
-            <div class="modalform">
-                <div class="inputboxdiv">
-                <label for="">Username</label>
-                <input type="text" placeholder="Username">
+                    <div class="moviesinfo">
+                        <h1>Bahubali : The Begining</h1>
+                        <button onclick="LikeMovie('{{movie.id}}','{{user}}')" class='likebtn' id="likebtn{{movie.id}}">&#10084;</button>
+                        <div class="shortinfo">
+                            <label for="">&#11088; 8.1</label>
+                            <label for="">&#128337; 156m</label>
+                            <label for="">Released date : 2017-04-27</label>
+                        </div>
+                        <p>Overview :</p>
+                        <p>
+                            When Mahendra, the son of Bāhubali, learns about his heritage,
+                            he begins to look for answers. His story is juxtaposed with past
+                            events that unfolded in the Mahishmati Kingdom.
+                        </p>
+                        <label for="">Director : S. S. Rajamouli</label>
+                        <label for="">Productions :</label>
+                        <div class="productioninfodiv">
+                            <img src="https://image.tmdb.org/t/p/original///oBMVxYVfjmirgN7tpz4CaSSTnNj.png" alt="">
+                            <img src="https://image.tmdb.org/t/p/original//oBMVxYVfjmirgN7tpz4CaSSTnNj.png" alt="">
+                        </div>
+                    </div>
                 </div>
 
-                <div id="emailinputdiv" class="inputboxdiv">
-                <label for="">Email</label>
-                <input id="emailinput" disabled type="text" placeholder="Email">
+                <div class="castdiv">
+                    <h2 for="">Cast</h2>
+                    <div class="actorinfodiv">
+                        <img src="https://image.tmdb.org/t/p/original/6naZ3oybdCtfggc5pTrcBDxOXrP.jpg" alt="">
+                        <label for="">Prabhas Devkar</label>
+                    </div>
                 </div>
-
-                <div class="inputboxdiv">
-                <label for="">Password</label>
-                <input type="password" placeholder="Password">
-                </div>
-                <button class="btn">Submit</button>
             </div>
-        </div>
 
+            <!-- Signin Modal -->
 
+            <div id="modalcontainer" class="modalcontainer">
+                <div class="modalhead">
+                    <button onclick="ShowLogin()" class="btn" id="modalloginbtn">
+                        Login
+                    </button>
+                    <button onclick="ShowSignup()" class="btn" id="modalsignupbtn">
+                        Signup
+                    </button>
+                    <button onclick="CloseModal()" id="closemodal" class="btn">X</button>
+                </div>
+                <div class="modalform">
+                    <div class="inputboxdiv">
+                        <label for="">Username</label>
+                        <input type="text" placeholder="Username" />
+                    </div>
+
+                    <div id="emailinputdiv" class="inputboxdiv">
+                        <label for="">Email</label>
+                        <input id="emailinput" disabled type="text" placeholder="Email" />
+                    </div>
+
+                    <div class="inputboxdiv">
+                        <label for="">Password</label>
+                        <input type="password" placeholder="Password" />
+                    </div>
+                    <button class="btn">Submit</button>
+                </div>
+            </div>
     </main>
-
-
-
-
-
-
 </body>
+
 </html>

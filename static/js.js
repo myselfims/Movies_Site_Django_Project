@@ -2,13 +2,25 @@
 
 function CloseModal(){
     document.getElementById('modalcontainer').style.display = 'none';
-    document.getElementById('container').style.filter = 'none';
+    
+    try{
+        document.getElementById('subcontainer').style.filter = 'none';
+
+    }catch{
+        document.getElementById('container').style.filter = 'none';
+    }
 
 }
 
 function ShowModal(){
     document.getElementById('modalcontainer').style.display = 'flex';
-    document.getElementById('container').style.filter = 'blur(15px)';
+    
+    try{
+        document.getElementById('subcontainer').style.filter = 'blur(15px)';
+
+    }catch{
+        document.getElementById('container').style.filter = 'blur(15px)';
+    }
     document.getElementById('usernameinput').value = '';
     document.getElementById('emailinput').value = '';
     document.getElementById('passwordinput').value = '';
@@ -146,7 +158,12 @@ function SubmitForm(){
 
                     for (var i=0; i < response['liked'].length; i++){
                         console.log(response['liked'][i]['id'])
-                        document.getElementById('likebtn'+response['liked'][i]['id']).innerHTML = '&#10084;';
+                        try{
+
+                            document.getElementById('likebtn'+response['liked'][i]['id']).innerHTML = '&#10084;';
+                        }catch{
+                            
+                        }
                     }
 
                     document.getElementById('logoutdivajax').style.display = 'flex';

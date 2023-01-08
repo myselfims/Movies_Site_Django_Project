@@ -1,0 +1,74 @@
+{% extends 'home.html' %} {% block detailtetemplatebody %}
+
+<div style="background-image: url('https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}"
+    id="moviesdetailcontainer" class="container">
+    <div id="progressbar" class="progressbar">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <div id='subcontainer' class="subcontainer">
+        <div id="progressbar" class="progressbar">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="contentdiv">
+            <img src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt="" />
+
+            <div class="moviesinfo">
+                <h1>{{movie.title}}</h1>
+                    {% if movie.id in liked_movies %}
+                        <button onclick="LikeMovie('{{movie.id}}','{{user}}')" class='likebtn' id="likebtn{{movie.id}}">&#10084;</button>
+                    {% else %}
+                        <button onclick="LikeMovie('{{movie.id}}','{{user}}')" class='likebtn' id="likebtn{{movie.id}}">&#9825;</button>
+                    {% endif %}
+                <div class="shortinfo">
+                    <label for="">&#11088; {{movie.vote_average}}</label>
+                    <label for="">&#128337; {{movie.runtime}}m</label>
+                    <label for="">Released date : {{movie.release_date}}</label>
+                </div>
+                <p>Overview :</p>
+                <p>
+                    {{movie.overview}}
+                </p>
+                {% for director in crew %}
+                {% if director.job == 'Director'%}
+                <label for="">Director : {{director.name}}</label>
+                {% endif %}
+                {% endfor %}
+                <label for="">Productions :</label>
+                <div class="productioninfodiv">
+                    {% for company in production %}
+                    {% if company.logo_path %}
+                    <img src="https://image.tmdb.org/t/p/original/{{company.logo_path}}" alt="Actor" />
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="castactordiv">
+            <h2 for="">Cast</h2>
+            <div class="castdiv">
+                {% for actor in cast %}
+                {% if actor.known_for_department == 'Acting' and actor.profile_path%}
+                <div class="actorinfodiv">
+                    <img src="https://image.tmdb.org/t/p/original/{{actor.profile_path}}" alt="" />
+                    <label for="">{{actor.name}}({{actor.character}})</label>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% endblock detailtetemplatebody %}
+</div>
