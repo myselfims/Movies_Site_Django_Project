@@ -280,3 +280,25 @@ nav a:hover{
     animation: runner 2s linear 0s infinite ;
     border-radius: 4em;
 }
+
+
+/* FAVORITE PAGE CSS */
+.subcontainer{
+    color: white;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    align-items: center;
+    background-color: rgb(78, 78, 78);
+    display: flex;
+    flex-direction: column;
+
+}
+.subcontainer h1{
+    margin-top: -3em;
+}
+#unhappyheart{
+    width: 30em;
+    color: white;
+    filter: drop-shadow(16px 15px 20px red) invert(100%);
+}

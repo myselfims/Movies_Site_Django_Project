@@ -34,34 +34,34 @@ var ajax_url = "http://127.0.0.1:8000/site_actions/"
 
 function LikeMovie(id,user){
     document.getElementById('progressbar').style.display = 'flex';
-    if (user !== 'none'){
-        $.ajax({
-            type : 'POST',
-            url : ajax_url,
-            data : {
-                action : 'like_movie',
-                movie_id : id,
-            },
-            
-            success : function(response){
-                console.log(response['msg'])
-                document.getElementById('progressbar').style.display = 'none';
-                if (response['msg'] === 'liked'){
-                    document.getElementById('likebtn'+id).innerHTML = '&#10084;';
-                    
-                } else if (response['msg'] === 'unliked') {
-                    document.getElementById('likebtn'+id).innerHTML = '&#9825;';
-
-                } else {
-                    console.log(response['msg'])
-                    ShowModal()
-
-                }
+    
+    $.ajax({
+        type : 'POST',
+        url : ajax_url,
+        data : {
+            action : 'like_movie',
+            movie_id : id,
+        },
+        
+        success : function(response){
+            console.log(response['msg'])
+            document.getElementById('progressbar').style.display = 'none';
+            if (response['msg'] === 'liked'){
+                document.getElementById('likebtn'+id).innerHTML = '&#10084;';
                 
-            }
-        })
+            } else if (response['msg'] === 'unliked') {
+                document.getElementById('likebtn'+id).innerHTML = '&#9825;';
 
-    }
+            } else {
+                console.log(response['msg'])
+                ShowModal()
+
+            }
+            
+        }
+    })
+
+    
     
 
 }

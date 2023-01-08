@@ -6,29 +6,30 @@ from .models import Liked_Movies
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate,login,logout
+import requests
+from django.shortcuts import redirect
 # Create your views here.
 
 
+url = "https://imdb-top-100-movies.p.rapidapi.com/"
+
+headers = {
+    "X-RapidAPI-Key": "92a745b94emsh0cb338c535b85eap183d4ajsn2e683d429da5",
+    "X-RapidAPI-Host": "imdb-top-100-movies.p.rapidapi.com"
+}
+
+response = requests.request("GET", url, headers=headers)
+
 def home(request):
-    import requests
-    import json
 
-    url = "https://imdb-top-100-movies.p.rapidapi.com/"
-
-    headers = {
-        "X-RapidAPI-Key": "92a745b94emsh0cb338c535b85eap183d4ajsn2e683d429da5",
-        "X-RapidAPI-Host": "imdb-top-100-movies.p.rapidapi.com"
-    }
-
-    response = requests.request("GET", url, headers=headers)
-    
-    # print(response.json())
     
     if request.user.is_authenticated:
         user = User.objects.get(username = request.user.username)
         user = User.objects.get(username = request.user.username)
         liked_movies = Liked_Movies.objects.filter(user=user)
         liked = []
+        print(response.json())
+        print(type(response.json()))
         for movie in liked_movies:
             liked.append(movie.movie_id)
         print('movies',liked)
@@ -37,6 +38,26 @@ def home(request):
     
     
     return render(request, 'home.html',{'movies':response.json(),'user':'none'})
+
+
+
+def favorite(request):
+    if request.user.is_authenticated:
+        user = User.objects.get(username=request.user.username)
+        liked_movies = Liked_Movies.objects.filter(user = user)
+        liked = []
+        liked_list = []
+        for movie in liked_movies:
+            liked_list.append(movie.movie_id)
+            for m in response.json():
+                if m['id'] == movie.movie_id:
+                    liked.append(m)
+                    
+        print(liked_list)
+        print('movies',liked)
+        return render(request, 'favorite.html',{'movies':liked,'user':user,'liked_movies': liked_list})
+    return redirect('/')
+
     
 
 

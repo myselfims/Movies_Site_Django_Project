@@ -14,11 +14,11 @@
 <body onload='CheckLogin()'>
     <nav>
         <div class="nav">
-            <a href="">Home</a>
+            <a href="/">Home</a>
             <a href="">Bollywood</a>
             <a href="">Hollywood</a>
             <a href="">Trending</a>
-            <a href="" id='favorite'>favorite</a>
+            <a href="{%url 'favorite' %}" id='favorite'>favorite</a>
 
             <div class="searchdiv">
                 <input placeholder = "search a movie" type="text">
@@ -60,6 +60,7 @@
                 <div class="bar"></div>
                 <div class="bar"></div>
             </div>
+            {% if movies %}
             {% for movie in movies %}
                 <div class="postercard">
                     <div class="ratings">
@@ -77,6 +78,12 @@
                     <p>{{movie.description}}</p>
                 </div>
             {% endfor %}
+            {% else %}
+            <div class="subcontainer">
+                <img id="unhappyheart" src="https://cdn1.iconfinder.com/data/icons/hearts-9/509/love-heart_146-512.png" alt="">
+                <h1>You don't have favorite yet!</h1>
+            </div>
+            {% endif %}
         </div>
 
 
