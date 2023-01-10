@@ -211,3 +211,15 @@ function CheckLogin(){
         }
     })
 }
+
+function CloseTrailorModal(){
+    document.getElementById('trailormodal').style.display = 'none';
+    document.body.classList.remove("stop-scrolling");
+    document.getElementById('player').src = '';
+}
+
+function ShowTrailorModal(src){
+    document.getElementById('player').src = 'https://www.youtube.com/embed/'+src;
+    document.getElementById('trailormodal').style.display = 'flex';
+    document.body.classList.add("stop-scrolling");
+}

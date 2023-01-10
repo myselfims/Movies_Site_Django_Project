@@ -60,6 +60,8 @@
                             <label for="">&#11088; 8.1</label>
                             <label for="">&#128337; 156m</label>
                             <label for="">Released date : 2017-04-27</label>
+                            <button onclick="ShowTrailorModal()" class="btn">Watch Trailor</button>
+                            <a href=""><button class="btn">Download</button></a>
                         </div>
                         <p>Overview :</p>
                         <p>
@@ -113,6 +115,13 @@
                         <input type="password" placeholder="Password" />
                     </div>
                     <button class="btn">Submit</button>
+                </div>
+            </div>
+
+            <div id="trailormodal" class="trailormodal">
+                <button onclick="CloseTrailorModal()" class="btn">X</button>
+                <div class="trailordiv">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/FNVcWNG0Yus" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
             </div>
     </main>

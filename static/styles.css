@@ -349,6 +349,11 @@ nav a:hover{
     font-weight: bold;
 
 }
+
+.shortinfo button{
+    margin: 1em;
+}
+
 .moviesinfo p,label{
     margin: 1em;
     font-size: 1.3em;
@@ -415,4 +420,25 @@ nav a:hover{
 .castdiv img{
     width: 6em;
     border-radius: 100em;
+}
+
+.trailormodal{
+    display: none;
+    flex-direction: column;
+    padding: 0em 0em 1em 0em;
+    background-color: rgba(0, 0, 0, 0.413);
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
 }

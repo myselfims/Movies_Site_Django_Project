@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate,login,logout
 import requests
 from django.shortcuts import redirect
+from bs4 import BeautifulSoup
 # Create your views here.
 
 
@@ -28,6 +29,48 @@ def cast_details(id):
     url = f'https://api.themoviedb.org/3/movie/{id}/credits?api_key=65b4c60e268ed91234cd5991cb97f273&language=en-US'
     r = requests.request('GET', url=url)
     return r.json()
+
+
+def get_trailor(id):
+    url = f"https://api.themoviedb.org/3/movie/{id}/videos?api_key=65b4c60e268ed91234cd5991cb97f273&language=en-US"
+    r = requests.request('GET', url=url)
+    return r.json()
+    
+
+
+
+
+def download_movie(name,year):
+    name = str(name).lower()
+    final = name.replace(' ','+')
+    url = f"https://moviesmod.in/?s={final}'+'{year}"
+    return url
+
+
+def download_link(name,year):
+    title = str(name).lower()
+    t = title.replace(' ', '+')
+    url = f'https://moviesmod.in/?s={t}'
+    r = requests.get(url)
+    html = r.content
+    try:
+        soup = BeautifulSoup(html, 'html.parser')
+        links = ''
+        anchors = soup.find_all('a',class_='post-image post-image-left')
+        for link in anchors:
+            links= link.get('href')
+            break
+        nr = requests.get(str(links))
+        nhtml = nr.content
+        nsoup = BeautifulSoup(nhtml, 'html.parser')
+        down_link = ''
+        nanchors = nsoup.find_all('a',class_='maxbutton-1 maxbutton maxbutton-download-links')
+        for l in nanchors:
+            down_link= l.get('href')
+            break
+        return down_link
+    except:
+        return None
     
 
 search_url = 'https://www.omdbapi.com/?t=tt3896198&apikey=189f9712'
@@ -46,8 +89,11 @@ headers = {
 # response = requests.request("GET", url, headers=headers)
 
 def home(request):
-    url = f'https://api.themoviedb.org/3/trending/all/week?api_key=65b4c60e268ed91234cd5991cb97f273'
-    r = requests.request('GET', url=url)
+    try:
+        url = f'https://api.themoviedb.org/3/trending/all/week?api_key=65b4c60e268ed91234cd5991cb97f273'
+        r = requests.request('GET', url=url)
+    except:
+        return HttpResponse('Please check your internet connection!')
      
     response = r.json()
     
@@ -128,7 +174,13 @@ def search(request):
 def movie_detail(request,id):
     details = movie_details(id)
     cast = cast_details(id)
+    trailor = get_trailor(id)
+    for t in trailor['results']:
+        if t['type'] == 'Trailer':
+            trailor = t
+            break
     print(cast)
+    url = download_link(details['title'],str(details['release_date'])[:4])
     if request.user.is_authenticated:
         
         user = User.objects.get(username=request.user.username)
@@ -136,9 +188,9 @@ def movie_detail(request,id):
         liked_list = []
         for m in liked_movies:
             liked_list.append(int(m.movie_id))
-        return render(request, 'movie detail.html',{'movie':details,'cast':cast['cast'],'crew':cast['crew'],'production':details['production_companies'],'liked_movies':liked_list})
+        return render(request, 'movie detail.html',{'movie':details,'cast':cast['cast'],'crew':cast['crew'],'production':details['production_companies'],'liked_movies':liked_list,'downloadlink':url,'trailor':trailor})
     
-    return render(request, 'movie detail.html',{'movie':details,'cast':cast['cast'],'crew':cast['crew'],'production':details['production_companies']})
+    return render(request, 'movie detail.html',{'movie':details,'cast':cast['cast'],'crew':cast['crew'],'production':details['production_companies'],'downloadlink':url,'trailor':trailor})
 
     
     

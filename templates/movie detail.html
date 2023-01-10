@@ -34,6 +34,15 @@
                     <label for="">&#11088; {{movie.vote_average}}</label>
                     <label for="">&#128337; {{movie.runtime}}m</label>
                     <label for="">Released date : {{movie.release_date}}</label>
+                    <div>
+                    {% if trailor.key %}
+                    <button onclick='ShowTrailorModal("{{trailor.key}}")' class="btn">Watch Trailor</button>
+                    {% endif %}
+
+                    {% if downloadlink%}
+                    <a target='_blank' href="{{downloadlink}}"><button class="btn">Download</button></a>
+                    {% endif %}
+                    </div>
                 </div>
                 <p>Overview :</p>
                 <p>
@@ -70,5 +79,13 @@
         </div>
     </div>
 
-    {% endblock detailtetemplatebody %}
 </div>
+<div id="trailormodal" class="trailormodal">
+    <button onclick="CloseTrailorModal()" class="btn">X</button>
+    <div class="trailordiv">
+        <iframe id='player' width="800" height="500" src="https://www.youtube.com/embed/{{trailor.key}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</div>
+{% endblock detailtetemplatebody %}
+
+
