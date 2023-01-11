@@ -1,8 +1,21 @@
 
 
+function CheckMobile(){
+    var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));  
+    if (mobile) { 
+        return true
+    } 
+    else 
+    { 
+       return false
+    }
+}
+
+
+
 function CloseModal(){
     document.getElementById('modalcontainer').style.display = 'none';
-    
+    document.body.classList.remove("stop-scrolling");
     try{
         document.getElementById('subcontainer').style.filter = 'none';
 
@@ -12,9 +25,14 @@ function CloseModal(){
 
 }
 
+function ShowAnimation(){
+    document.getElementById('animation').style.display = 'flex';
+}
+
 function ShowModal(){
     document.getElementById('modalcontainer').style.display = 'flex';
-    
+    document.getElementById('sidebardiv').style.display = 'flex';
+    document.body.classList.add("stop-scrolling");
     try{
         document.getElementById('subcontainer').style.filter = 'blur(15px)';
 
@@ -42,11 +60,27 @@ function ShowLogin(){
 
 }
 
+var sidebar = false
+
+function ShowSideBar(){
+    if (sidebar === false){
+        document.getElementById('sidebardiv').style.display = 'flex';
+        document.getElementById('sidebarbtn').style.backgroundColor = 'aqua';
+        sidebar = true
+    } else {
+        document.getElementById('sidebardiv').style.display = 'none';
+        document.getElementById('sidebarbtn').style.backgroundColor = 'black';
+        sidebar = false
+
+    }
+}
+
 var ajax_url = "http://127.0.0.1:8000/site_actions/"
 
 function LikeMovie(id,user){
-    document.getElementById('progressbar').style.display = 'flex';
-    
+    // document.getElementById('animation').style.display = 'flex';
+
+    // window.document.style.cursor = 'wait';
     $.ajax({
         type : 'POST',
         url : ajax_url,
@@ -57,7 +91,7 @@ function LikeMovie(id,user){
         
         success : function(response){
             console.log(response['msg'])
-            document.getElementById('progressbar').style.display = 'none';
+            // window.document.style.cursor = 'none';
             if (response['msg'] === 'liked'){
                 document.getElementById('likebtn'+id).innerHTML = '&#10084;';
                 
@@ -80,7 +114,7 @@ function LikeMovie(id,user){
 
 
 function Logout(){
-    document.getElementById('progressbar').style.display = 'flex'
+    document.getElementById('animation').style.display = 'flex'
     console.log('logout...')
     $.ajax({
         type: 'POST',
@@ -90,7 +124,7 @@ function Logout(){
             
         },
         success : function(response){
-            document.getElementById('progressbar').style.display = 'none'
+            document.getElementById('animation').style.display = 'none'
             console.log('logouted')
             if (response['msg'] == 'logged out'){
                 var likebtns = document.getElementsByClassName('likebtn');
@@ -103,9 +137,18 @@ function Logout(){
                 } catch{
 
                 }
+                var check = CheckMobile()
+                if (check === true){
+                    document.getElementById('loginbtnajax').style.display = 'none';
+                    document.getElementById('loginbtnmobile').style.display = 'flex';
+                    document.getElementById('mobilelogoutbtn').style.display = 'none';
+                    
+                } else{
+                    document.getElementById('loginbtnajax').style.display = 'flex';
+
+                }
                 document.getElementById('logoutdivajax').style.display = 'none';
                 document.getElementById('favorite').style.display = 'none';
-                document.getElementById('loginbtnajax').style.display = 'flex';
 
             }
             
@@ -165,11 +208,24 @@ function SubmitForm(){
                             
                         }
                     }
+                    var check = CheckMobile()
+                    if (check === true){
+                        
+                        document.getElementById('loginbtnmobile').style.display = 'none';
+                        document.getElementById('mobilelogoutbtn').style.display = 'flex';
+                        document.getElementById('logoutdivajax').style.display = 'none';
+                        document.getElementById('favorite').style.display = 'none';
+                        document.getElementById('favoritemobile').style.display = 'flex';
+                        
+                    } else{
+                        document.getElementById('logoutdivajax').style.display = 'flex';
+                        document.getElementById('favorite').style.display = 'flex';
+                        
 
-                    document.getElementById('logoutdivajax').style.display = 'flex';
-                    document.getElementById('favorite').style.display = 'flex';
+                    }
                     document.getElementById('loginbtnajax').style.display = 'none';
                     document.getElementById('usernamelabelajax').innerHTML = response['username'];
+                    document.getElementById('usernamelabelmobile').innerHTML = response['username'];
 
                 }
 
@@ -190,7 +246,7 @@ function HideProgress(){
 }
 
 function CheckLogin(){
-    document.getElementById('progressbar').style.display = 'flex';
+    document.getElementById('animation').style.display = 'flex';
     $.ajax({
         type: 'POST',
         url : ajax_url,
@@ -198,14 +254,39 @@ function CheckLogin(){
             action : 'check_login'
         },
         success : function(response){
-            document.getElementById('progressbar').style.display = 'none';
+            document.getElementById('animation').style.display = 'none';
             if (response['msg']=== 'true'){
-                document.getElementById('logoutdivajax').style.display = 'flex';
-                document.getElementById('favorite').style.display = 'flex';
+
+                var check = CheckMobile()
+                if (check === true){
+                    document.getElementById('loginbtnajax').style.display = 'none';
+                    document.getElementById('loginbtnmobile').style.display = 'none';
+                    document.getElementById('mobilelogoutbtn').style.display = 'flex';
+                    document.getElementById('favoritemobile').style.display = 'flex';
+                    
+                } else{
+                    document.getElementById('loginbtnajax').style.display = 'flex';
+                    document.getElementById('logoutdivajax').style.display = 'flex';
+                    document.getElementById('favorite').style.display = 'flex';
+
+                }
+
                 document.getElementById('usernamelabelajax').innerHTML = response['username'];
+                document.getElementById('usernamelabelmobile').innerHTML = response['username'];
+
             } else if (response['msg']==='false'){
-                document.getElementById('loginbtnajax').style.display = 'flex';
-                document.getElementById('favorite').style.display = 'none';
+                var check = CheckMobile()
+                if (check === true){
+                    
+                    document.getElementById('loginbtnmobile').style.display = 'flex';
+                    document.getElementById('favoritemobile').style.display = 'none';
+                    document.getElementById('mobilelogoutbtn').style.display = 'none';
+                    
+                } else{
+                    document.getElementById('loginbtnajax').style.display = 'flex';
+                    document.getElementById('favorite').style.display = 'none';
+
+                }
             }
 
         }
@@ -214,6 +295,7 @@ function CheckLogin(){
 
 function CloseTrailorModal(){
     document.getElementById('trailormodal').style.display = 'none';
+    document.getElementById('contentdiv').style.filter = 'none';
     document.body.classList.remove("stop-scrolling");
     document.getElementById('player').src = '';
 }
@@ -222,4 +304,19 @@ function ShowTrailorModal(src){
     document.getElementById('player').src = 'https://www.youtube.com/embed/'+src;
     document.getElementById('trailormodal').style.display = 'flex';
     document.body.classList.add("stop-scrolling");
+    document.getElementById('contentdiv').style.filter = 'blur(15px)';
 }
+
+function ShowDownloadModal(){
+    document.getElementById('downloadmodal').style.display = 'flex';
+    document.body.classList.add("stop-scrolling");
+    document.getElementById('contentdiv').style.filter = 'blur(15px)';
+}
+
+function HideDownloadModal(){
+    document.getElementById('downloadmodal').style.display = 'none';
+    document.getElementById('contentdiv').style.filter = 'none';
+    document.body.classList.remove("stop-scrolling");
+}
+
+

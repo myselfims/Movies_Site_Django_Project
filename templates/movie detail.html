@@ -12,15 +12,15 @@
     </div>
 
     <div id='subcontainer' class="subcontainer">
-        <div id="progressbar" class="progressbar">
+        {% comment %} <div id="progressbar" class="progressbar">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
-        </div>
-        <div class="contentdiv">
+        </div> {% endcomment %}
+        <div id='contentdiv' class="contentdiv">
             <img src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt="" />
 
             <div class="moviesinfo">
@@ -36,11 +36,11 @@
                     <label for="">Released date : {{movie.release_date}}</label>
                     <div>
                     {% if trailor.key %}
-                    <button onclick='ShowTrailorModal("{{trailor.key}}")' class="btn">Watch Trailor</button>
+                    <button onclick='ShowTrailorModal("{{trailor.key}}")' class="btn">&#9654; Watch Trailor</button>
                     {% endif %}
 
-                    {% if downloadlink%}
-                    <a target='_blank' href="{{downloadlink}}"><button class="btn">Download</button></a>
+                    {% if downloadlinks%}
+                    <button onclick='ShowDownloadModal()' class="btn">Download</button>
                     {% endif %}
                     </div>
                 </div>
@@ -86,6 +86,22 @@
         <iframe id='player' width="800" height="500" src="https://www.youtube.com/embed/{{trailor.key}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 </div>
+
+<div id="downloadmodal" class="trailormodal">
+    <button onclick="HideDownloadModal()" class="btn">X</button>
+    <div class="downloaddiv">
+        {% for quality in qualities %}
+        <h3>{{quality}}</h3>
+        {% for link in downloadlinks %}
+        {% if forloop.counter0 == forloop.parentloop.counter0 %}
+        <a target="_blank"  href="{{link}}"><button class='btn' >Download</button></a>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+
+
 {% endblock detailtetemplatebody %}
 
 

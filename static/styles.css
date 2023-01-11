@@ -9,23 +9,37 @@
 nav{
     background-color: black;
     width: 100vw;
-   
-
+    z-index: 6;
+    position: fixed;
 }
+
 .nav{
     display: flex;
     flex-direction: row;
     align-items: center;
-   
+    height: 5em;
+    
+}
+
+.logodiv{
+    overflow: hidden;
+}
+
+#logo{
+    width: 4em;
+    margin-left: 1em;
+    border: 2px solid white;
+    border-radius: 100%;
+    
 }
 
 nav a{
-    font-size: 1.4rem;
+    font-size: 1rem;
     margin: 1vw;
     color: white;
     text-decoration: none;
     border-bottom: 2px solid rgb(0, 0, 0);
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 
 }
 nav a:hover{
@@ -35,11 +49,19 @@ nav a:hover{
 
 }
 
+.sidebardiv{
+    display: none;
+}
+
+#sidebarbtn{
+    display: none;
+}
+
 .searchdiv{
     margin: 0 0 0 10rem;
     align-self: center;
     justify-self: center;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     padding: 0.5em 2em;
     border-radius: 1.5em;
 }
@@ -60,7 +82,7 @@ nav a:hover{
 }
 
 .searchdiv button{
-    padding: 0.5em 1em;
+    padding: 0.3em 1em;
     border: 2px solid white;
     background-color: transparent;
     color: white;
@@ -139,7 +161,7 @@ nav a:hover{
     background-color: rgb(36, 36, 36);
     width: 100vw;
     padding: auto;
-
+    margin-top: 3em;
     position: relative;
 }
 
@@ -157,7 +179,7 @@ nav a:hover{
 }
 
 .postercard h1{
-    font-size: 1.5em;
+    font-size: 1.3em;
     margin: 0.5em 0;
 }
 
@@ -288,6 +310,75 @@ nav a:hover{
 }
 
 
+.animationdiv{
+    display: none;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.299);
+    height: 100vh;      
+    overflow: hidden;
+    position: fixed;
+    
+}
+.circle{
+    background-color: rgb(164, 60, 60);
+    align-self: center;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 100px;
+    
+}
+
+.loaderdiv{
+    background-color: red;
+    
+}
+
+#c1{
+
+    animation: fade 0.90s 0.80s infinite ;
+}
+#c2{
+    animation: fade 0.90s 0.70s infinite ;
+}
+#c3{
+    animation: fade 0.90s 0.60s infinite ;
+}
+#c4{
+    animation: fade 0.90s 0.50s infinite ;
+}
+#c5{
+    animation: fade 0.90s 0.40s infinite ;
+}
+#c6{
+    animation: fade 0.90s 0.30s infinite ;
+}
+#c7{
+    animation: fade 0.90s 0.20s infinite ;
+}
+#c8{
+    animation: fade 0.90s 0.10s infinite ;
+}
+
+@keyframes fade{
+    0%{
+        height: 0px;
+        
+        background-color: aqua;
+    }
+    50%{
+        height: 30px;
+        background-color: rgb(1, 69, 136);
+    }
+    100%{
+        height: 0px;
+        background-color: aqua;
+    }
+}
+
 /* FAVORITE PAGE CSS */
 #moviesdetailcontainer{
     display: flex;
@@ -340,9 +431,14 @@ nav a:hover{
     
 }
 
+#watchbtnmobile{
+    display: none;
+}
+
 .moviesinfo button{
     margin-right: 7em;
 }
+
 
 .shortinfo{
 
@@ -438,7 +534,140 @@ nav a:hover{
     color: white;
 }
 
+.downloaddiv{
+    display: flex;
+    justify-content: center;
+    margin: 2em;
+    flex-direction: column;
+}
+
+.downloaddiv h3{
+    margin: 1em;
+}
+
+
+
 .stop-scrolling {
     height: 100%;
     overflow: hidden;
+}
+
+
+/* CSS FOR RESPONSIVENESS */
+
+@media screen and (max-width: 600px) {
+    
+    .nav{
+        font-size: 10px;
+        text-align: center;
+    }
+    .nav a{
+        display: none;
+    }
+    .searchdiv{
+        margin: 0;
+        width: 100%; 
+        display: flex; 
+        text-align: center;
+        background-color: transparent;     
+        justify-content: center;
+    }
+    .searchdiv button{
+        font-size: 10px;
+        border-radius: 50%;
+    }
+    .btn{
+        font-size: 1.3em;
+        
+    }
+    .logoutdiv{
+        display: none;
+    }
+    #loginbtn{
+        display: none;
+    }
+    .contentdiv{
+        font-size: 10px;
+        width: 95%;
+        flex-direction: column;
+        padding: 1em;
+    }
+    .contentdiv img{
+        align-self: center;
+        width: 20rem;
+        margin: 1em;
+    }
+    .likebtn{
+        
+    }
+    .castdiv{
+        width: 100%;
+        font-size: 0.5em;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .actorinfodiv img{
+        width: 5em;
+    }
+    .subcontainer{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10em;
+    }
+    .shortinfo{
+        display: flex;
+        flex-direction: column;
+    }
+    iframe{
+        width: 25em;
+        height: 20em;
+    }
+    .trailormodal button {
+        margin: 1em;
+        font-size: 15px;
+    }
+    .castactordiv{
+        margin: 0;
+        margin-top: 1em;
+        width: 90%;
+    }
+    #sidebarbtn{
+        display: flex;
+    }
+    .sidebardiv{
+        position: fixed;
+        top: 3em;
+        display: none;
+        flex-direction: column;
+        background-color: black;
+        z-index: 10;
+        padding: 8px;
+        box-shadow: 100px 100px 300px 80px  black;
+        border: 2px solid white;
+        border-radius: 1em;
+        font-size: 10px;
+    }
+    .sidebardiv a{
+        margin: 5px 0;
+        text-decoration: none;
+    }
+    .logoutdiv{
+        display: none;
+    }
+    #loginbtnajax{
+        display: none;
+    }
+
+    .modalcontainer{
+
+        left: 0;
+        width: 90%;
+        margin: 1em;
+        align-self: center;
+        font-size: 10px;
+
+    }
+
+    
 }

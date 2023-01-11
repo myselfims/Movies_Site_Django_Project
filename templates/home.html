@@ -5,25 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{%static 'styles.css' %}">
+    <link rel="shortcut icon" href="{%static 'MoviesJunctionLogoFavicon.png' %}" type="image/x-icon">
     <script src="{%static 'js.js' %}"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-    <title>Movies Menia</title>
+    <title>Movies Junction</title>
 </head>
 
 <body onload='CheckLogin()'>
     <nav>
         <div class="nav">
+            <div class="logodiv">
+                <a href="/"><img id="logo" src="{%static 'MoviesJunctionLogo3.png' %}" alt="logo"></a>
+            </div>
             <a href="/">Home</a>
             <a href="{%url 'popular' %}">Popular</a>
             <a href="{%url 'upcoming' %}">Upcoming</a>
             <a href="{%url 'top_rated' %}">Top Rated</a>
             <a href="{%url 'favorite' %}" id='favorite'>favorite</a>
-
+            <button id="sidebarbtn" onclick="ShowSideBar()" class="btn"> <strong>☰</strong> </button>
             <form action="{%url 'search' %}" method='post'> {% csrf_token %}
             <div class="searchdiv">
                 <input name='query' placeholder = "search a movie" type="text">
-                <button class='btn'>Go</button>
+                <button class='btn'>🔍</button>
             </div>
             </form>
             {% comment %} {% if user != 'none' %}
@@ -52,16 +56,32 @@
         </div>
     </nav>
 
+      <!-- Side Bar -->
+
+      <div id="sidebardiv" class="sidebardiv">
+        <label id='usernamelabelmobile' style = 'color: black;' >{{user.username}}</label>
+        <br>
+        <a class="btn" href="/" >Home</a>
+        <a class="btn" href="{%url 'popular' %}">Popular</a>
+        <a class="btn" href="{%url 'upcoming' %}">Upcoming</a>
+        <a class="btn" href="{%url 'top_rated' %}">Top Rated</a>
+        <a class="btn" href="{%url 'favorite' %}" id='favoritemobile'>favorite</a>
+        <button id='mobilelogoutbtn' onclick="Logout()" class='btn'>logout</button>
+        <button id='loginbtnmobile' onclick="ShowModal()" class='btn'>Login</button>
+    </div>
+
     <main>
         {% block detailtetemplatebody %}
         <div id="container" class="container">
-            <div id='progressbar' class="progressbar">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+            <div id='animation' class="animationdiv">
+                <span id="c1" class="circle"></span>
+                <span id="c2" class="circle"></span>
+                <span id="c3" class="circle"></span>
+                <span id="c4" class="circle"></span>
+                <span id="c5" class="circle"></span>
+                <span id="c6" class="circle"></span>
+                <span id="c7" class="circle"></span>
+                <span id="c8" class="circle"></span>
             </div>
             {% if movies %}
             {% for movie in movies %}
@@ -78,7 +98,7 @@
                         <button onclick="LikeMovie('{{movie.id}}','{{user}}')" class='likebtn' id="likebtn{{movie.id}}">&#9825;</button>
                         {% endif %}
                     </div>
-                    <a class='movietitleheading' href="{%url 'movie_detail' id=movie.id %}">   
+                    <a onclick='ShowAnimation()' class='movietitleheading' href="{%url 'movie_detail' id=movie.id %}">   
                     <img src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt="Poster">
                     <h1>{{movie.title}} {{movie.year}}</h1>
                     <p>{{movie.description}}</p>

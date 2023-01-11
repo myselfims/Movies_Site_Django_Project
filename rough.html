@@ -5,23 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="shortcut icon" href="static/MoviesJunctionLogoFavicon.png" type="image/x-icon">
     <script src="/static/js.js"></script>
-    <title>Movies Menia</title>
+    <title>Movies Junction</title>
 </head>
 <style></style>
 
 <body>
     <nav>
         <div class="nav">
+            <div class="logodiv">
+                <a href="/"><img id="logo" src="static/MoviesJunctionLogo3.png" alt="logo"></a>
+            </div>
             <a href="">Home</a>
             <a href="">Bollywood</a>
             <a href="">Hollywood</a>
             <a href="">Trending</a>
             <a href="">Category</a>
-
+            <button id="sidebarbtn" onclick="ShowSideBar()" class="btn"> <strong>☰</strong> </button>
             <div class="searchdiv">
                 <input placeholder="search a movie" type="text" />
-                <button class="btn">Go</button>
+                <button class="btn">🔍</button>
             </div>
             <div class="logoutdiv">
                 <select name="" id="">
@@ -32,7 +36,22 @@
             </div>
             <button onclick="ShowModal()" id="loginbtn" class="btn">Login</button>
         </div>
+
+        
     </nav>
+    
+    <!-- Side Bar -->
+
+    <div id="sidebardiv" class="sidebardiv">
+        <label style="color:white" for="username">ims</label>
+        <br>
+        <a href="" class="btn">Home</a>
+        <a href="" class="btn">Bollywood</a>
+        <a href="" class="btn">Hollywood</a>
+        <a href="" class="btn">Trending</a>
+        <a href="" class="btn">Category</a>
+        <button class="btn">Logout</button>
+    </div>
 
     <main>
         <div style="background-image: url('https://image.tmdb.org/t/p/original//u6CmMSCuSA1GMn8o9Y2e5hNFlsX.jpg" id="moviesdetailcontainer" class="container">
@@ -60,8 +79,10 @@
                             <label for="">&#11088; 8.1</label>
                             <label for="">&#128337; 156m</label>
                             <label for="">Released date : 2017-04-27</label>
+                            <div>
                             <button onclick="ShowTrailorModal()" class="btn">Watch Trailor</button>
                             <a href=""><button class="btn">Download</button></a>
+                        </div>
                         </div>
                         <p>Overview :</p>
                         <p>
