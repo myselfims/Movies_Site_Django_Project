@@ -1,0 +1,671 @@
+*{
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: 'Varela Round', sans-serif;
+}
+
+
+nav{
+    background-color: black;
+    width: 100vw;
+    z-index: 6;
+    position: fixed;
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 5em;
+    
+}
+
+.logodiv{
+    overflow: hidden;
+}
+
+#logo{
+    width: 4em;
+    margin-left: 1em;
+    border: 2px solid white;
+    border-radius: 100%;
+    
+}
+
+nav a{
+    font-size: 1rem;
+    margin: 1vw;
+    color: white;
+    text-decoration: none;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    padding: 0.5rem 0;
+
+}
+nav a:hover{
+    border-bottom: 2px solid white;
+    padding-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.587);
+
+}
+
+.sidebardiv{
+    display: none;
+}
+
+#sidebarbtn{
+    display: none;
+}
+
+.searchdiv{
+    margin: 0 0 0 10rem;
+    align-self: center;
+    justify-self: center;
+    /* border: 2px solid white; */
+    padding: 0.5em 2em;
+    border-radius: 1.5em;
+}
+
+.searchdiv:focus{
+    border: 2px solid black;
+}
+
+.searchdiv input{
+    font-size: 1.3rem;
+    border: none;
+    padding: 5px;
+    border-bottom: 3px solid white;
+    background-color: transparent;
+    outline: none;
+    color: white;
+
+}
+
+.searchdiv button{
+    padding: 0.3em 1em;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    font-size: 1vw;
+    border-radius: 1em;
+    margin: 0 1em;
+    cursor: pointer;
+    
+}
+
+.btn{
+    padding: 0.5em 1em;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    font-size: 1vw;
+    border-radius: 1em;
+    margin: 0 1em;
+    cursor: pointer;
+}
+.btn:hover{
+    border-color: aqua;
+}
+
+#favorite{
+    display: none;
+}
+
+.logoutdiv{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 2em;
+    margin: 0 3em;
+    color: white;
+}
+
+#logoutdivajax{
+    display: none;
+}
+
+#loginbtnajax{
+    display: none;
+    right: 2em;
+    position: absolute;
+}
+
+
+
+.logoutdiv select:hover{
+    border-color: aqua;
+}
+
+.logoutdiv select{
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 1em;
+    border-radius: 1em;
+    cursor: pointer;
+
+}
+.logoutdiv option{
+    color: black;
+    padding: 1em;
+    cursor: pointer;
+}
+
+#loginbtn{
+    right: 2em;
+    position: absolute;
+}
+
+.container{
+    background-color: rgb(36, 36, 36);
+    width: 100vw;
+    padding: auto;
+    margin-top: 3em;
+    position: relative;
+}
+
+.postercard{
+    display: inline-block;
+    width: 18em;
+    height: auto;
+    border: 3px solid black;
+    margin: 2em;
+    border-radius: 1em;
+    color: white;
+    padding: 0.5em;
+
+
+}
+
+.postercard h1{
+    font-size: 1.3em;
+    margin: 0.5em 0;
+}
+
+.movietitleheading{
+    text-decoration: none;
+    color: white;
+}
+
+.postercard:hover{
+    border-color: rgba(255, 255, 255, 0.733);
+    cursor: pointer;
+}
+
+.postercard img{
+    width: 100%;
+    
+}
+
+.postercard p{
+    color: rgba(255, 255, 255, 0.66);
+}
+
+.ratings{
+    background-color: rgba(0, 0, 0, 0.498);
+    box-shadow: 5px 5px 100px 5px black;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    justify-content: center;
+    width: 16em;
+    padding: 1em;
+   
+}
+.likebtn{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 2em;
+    position: absolute;
+    right: 2px;
+    cursor: pointer;
+}
+
+.modalcontainer{
+    display: none;
+    flex-direction: column;
+    padding: 0em 0em 1em 0em;
+    background-color: rgba(0, 0, 0, 0.413);
+    position: absolute;
+    right: 34em;
+    top: 10em;
+    bottom: auto;
+    z-index: 5;
+    width: 30em;
+    border: 3px solid white;
+    border-radius: 1em;
+    color: white;
+
+}
+.modalform{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.inputboxdiv{
+    display: flex;
+    flex-direction: column;
+
+    margin: 2em;
+    margin-bottom: 1em;
+}
+.inputboxdiv input{
+    font-size: 1.3rem;
+    border: none;
+    padding: 5px;
+    border-bottom: 3px solid white;
+    background-color: transparent;
+    outline: none;
+    color: white;
+}
+
+.modalhead{
+    background-color: black;
+    /* margin-bottom: 1em; */
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: auto auto 80px;
+    color : white;
+    padding: 0.5em;
+}
+#emailinputdiv{
+    display: none;
+}
+#modalloginbtn{
+    border-color: aqua;
+}
+
+/* CSS For Progress Bar */
+
+.progressbar{
+    display: none;
+    height: 1em;
+    width: 100%;
+}
+
+
+
+@keyframes runner{
+    0%{
+        margin-left: -20%;
+    }
+    50%{
+        margin-left: 30%;
+    }
+    100%{
+        margin-left: 100%;
+    }
+}
+
+.bar{
+    width: 4em;
+    background-color: aqua;
+    height: 5px;
+    /* margin: 0 2em; */
+    animation: runner 2s linear 0s infinite ;
+    border-radius: 4em;
+}
+
+
+.animationdiv{
+    display: none;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.299);
+    height: 100vh;      
+    overflow: hidden;
+    position: fixed;
+    
+}
+.circle{
+    background-color: rgb(164, 60, 60);
+    align-self: center;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 100px;
+    
+}
+
+.loaderdiv{
+    background-color: red;
+    
+}
+
+#c1{
+
+    animation: fade 0.90s 0.80s infinite ;
+}
+#c2{
+    animation: fade 0.90s 0.70s infinite ;
+}
+#c3{
+    animation: fade 0.90s 0.60s infinite ;
+}
+#c4{
+    animation: fade 0.90s 0.50s infinite ;
+}
+#c5{
+    animation: fade 0.90s 0.40s infinite ;
+}
+#c6{
+    animation: fade 0.90s 0.30s infinite ;
+}
+#c7{
+    animation: fade 0.90s 0.20s infinite ;
+}
+#c8{
+    animation: fade 0.90s 0.10s infinite ;
+}
+
+@keyframes fade{
+    0%{
+        height: 0px;
+        
+        background-color: aqua;
+    }
+    50%{
+        height: 30px;
+        background-color: rgb(1, 69, 136);
+    }
+    100%{
+        height: 0px;
+        background-color: aqua;
+    }
+}
+
+/* FAVORITE PAGE CSS */
+#moviesdetailcontainer{
+    display: flex;
+    justify-content: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    position: relative;
+}
+.subcontainer{
+    color: white;
+    background-color: transparent;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    align-items: center;
+    
+    flex-direction: column;
+
+}
+.contentdiv{
+    background-color: rgba(0, 0, 0, 0.347);
+    width: 70em;
+    margin-top: 2em;
+    padding: 3em;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    border-radius: 2em;
+}
+.contentdiv img{
+    width: 50em;
+    align-self: flex-start;
+}
+
+.notfoundheading{
+    margin-top: -3em;
+}
+#unhappyheart{
+    width: 30em;
+    color: white;
+    filter: drop-shadow(16px 15px 20px red) invert(100%);
+}
+
+.moviesinfo{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    padding: 0 1em;
+    
+}
+
+#watchbtnmobile{
+    display: none;
+}
+
+.moviesinfo button{
+    margin-right: 7em;
+}
+
+
+.shortinfo{
+
+    font-weight: bold;
+
+}
+
+.shortinfo button{
+    margin: 1em;
+}
+
+.moviesinfo p,label{
+    margin: 1em;
+    font-size: 1.3em;
+}
+
+.moviesinfo h1{
+    margin: 0 0 0.2em 0.5em;
+
+}
+.productioninfodiv label{
+    display: block;
+}
+.productioninfodiv{
+    display: flex;
+  
+}
+
+.productioninfodiv img{
+    width: 15em;
+    margin: 2em;
+    border: 2px solid transparent;
+    padding: 0.5em;
+    
+}
+
+.productioninfodiv img:hover{
+    border: 2px solid white;
+    border-radius: 1em;
+    filter: invert();
+}
+
+.castactordiv{
+    margin: 3em;
+    display: flex;
+    width: 70em;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.347);
+    padding: 1em;
+    border-radius: 2em;
+}
+
+.castdiv{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.actorinfodiv{
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    width: 15em;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border: 2px solid transparent;
+    
+}
+.actorinfodiv:hover{
+    border: 2px solid white;
+    border-radius: 1em;
+}
+
+.castdiv img{
+    width: 6em;
+    border-radius: 100em;
+}
+
+.trailormodal{
+    display: none;
+    flex-direction: column;
+    padding: 0em 0em 1em 0em;
+    background-color: rgba(0, 0, 0, 0.413);
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.downloaddiv{
+    display: flex;
+    justify-content: center;
+    margin: 2em;
+    flex-direction: column;
+}
+
+.downloaddiv h3{
+    margin: 1em;
+}
+
+
+
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}
+
+
+/* CSS FOR RESPONSIVENESS */
+
+@media screen and (max-width: 600px) {
+    
+    .nav{
+        font-size: 10px;
+        text-align: center;
+    }
+    .nav a{
+        display: none;
+    }
+    .searchdiv{
+        margin: 0;
+        width: 100%; 
+        display: flex; 
+        text-align: center;
+        background-color: transparent;     
+        justify-content: center;
+    }
+    .searchdiv button{
+        font-size: 10px;
+        border-radius: 50%;
+    }
+    .btn{
+        font-size: 1.3em;
+        
+    }
+    .logoutdiv{
+        display: none;
+    }
+    #loginbtn{
+        display: none;
+    }
+    .contentdiv{
+        font-size: 10px;
+        width: 95%;
+        flex-direction: column;
+        padding: 1em;
+    }
+    .contentdiv img{
+        align-self: center;
+        width: 20rem;
+        margin: 1em;
+    }
+   
+    .castdiv{
+        width: 100%;
+        font-size: 0.5em;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .actorinfodiv img{
+        width: 5em;
+    }
+    .subcontainer{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10em;
+    }
+    .shortinfo{
+        display: flex;
+        flex-direction: column;
+    }
+    iframe{
+        width: 25em;
+        height: 20em;
+    }
+    .trailormodal button {
+        margin: 1em;
+        font-size: 15px;
+    }
+    .castactordiv{
+        margin: 0;
+        margin-top: 1em;
+        width: 90%;
+    }
+    #sidebarbtn{
+        display: flex;
+    }
+    .sidebardiv{
+        position: fixed;
+        top: 5em;
+        display: none;
+        flex-direction: column;
+        background-color: black;
+        z-index: 10;
+        padding: 8px;
+        box-shadow: 100px 100px 300px 80px  black;
+        border: 2px solid white;
+        border-radius: 1em;
+        font-size: 10px;
+    }
+    .sidebardiv a{
+        margin: 5px 0;
+        text-decoration: none;
+    }
+    .logoutdiv{
+        display: none;
+    }
+    #loginbtnajax{
+        display: none;
+    }
+
+    .modalcontainer{
+
+        left: 0;
+        width: 90%;
+        margin: 1em;
+        align-self: center;
+        font-size: 10px;
+
+    }
+
+    
+}
