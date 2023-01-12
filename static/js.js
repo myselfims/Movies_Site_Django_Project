@@ -220,10 +220,10 @@ function SubmitForm(){
                     } else{
                         document.getElementById('logoutdivajax').style.display = 'flex';
                         document.getElementById('favorite').style.display = 'flex';
+                        document.getElementById('loginbtnajax').style.display = 'none';
                         
 
                     }
-                    document.getElementById('loginbtnajax').style.display = 'none';
                     document.getElementById('usernamelabelajax').innerHTML = response['username'];
                     document.getElementById('usernamelabelmobile').innerHTML = response['username'];
 
@@ -265,7 +265,7 @@ function CheckLogin(){
                     document.getElementById('favoritemobile').style.display = 'flex';
                     
                 } else{
-                    document.getElementById('loginbtnajax').style.display = 'flex';
+                    document.getElementById('loginbtnajax').style.display = 'none';
                     document.getElementById('logoutdivajax').style.display = 'flex';
                     document.getElementById('favorite').style.display = 'flex';
 
