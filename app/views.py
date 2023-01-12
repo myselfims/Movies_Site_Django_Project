@@ -60,7 +60,7 @@ def download_link(name,year):
     t = title.replace(' ', '+')
     
     try:
-        url = f'https://moviesmod.in/?s={t}+{year}'
+        url = f'https://moviesmod.com/?s={t}+{year}'
         r = requests.get(url)
         html = r.content
         soup = BeautifulSoup(html, 'html.parser')
