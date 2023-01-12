@@ -637,7 +637,7 @@ nav a:hover{
     }
     .sidebardiv{
         position: fixed;
-        top: 3em;
+        top: 5em;
         display: none;
         flex-direction: column;
         background-color: black;
