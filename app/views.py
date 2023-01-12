@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 # Create your views here.
 
 
+
 # url = "https://imdb-top-100-movies.p.rapidapi.com/"
 
 def movies_types(type):
@@ -55,12 +56,14 @@ def download_movie(name,year):
     return url
 
 
+
+
 def download_link(name,year):
     title = str(name).lower()
     t = title.replace(' ', '+')
     
     try:
-        url = f'https://moviesmod.com/?s={t}+{year}'
+        url = f'https://moviesmod.in/?s={t}+{year}'
         r = requests.get(url)
         html = r.content
         soup = BeautifulSoup(html, 'html.parser')
