@@ -75,7 +75,7 @@ function ShowSideBar(){
     }
 }
 
-var ajax_url = "http://127.0.0.1:8000/site_actions/"
+var ajax_url = "https://moviesjunction.onrender.com/site_actions/"
 
 function LikeMovie(id,user){
     // document.getElementById('animation').style.display = 'flex';
