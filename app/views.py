@@ -9,11 +9,75 @@ from django.contrib.auth import authenticate,login,logout
 import requests
 from django.shortcuts import redirect
 from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+from time import sleep
+import requests
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 # Create your views here.
 
 
 
-# url = "https://imdb-top-100-movies.p.rapidapi.com/"
+# selenium function 
+
+def direct_download(url):
+    op = webdriver.ChromeOptions()
+    op.add_argument('headless')
+    op.add_argument("USER AGENT")
+    driver = webdriver.Chrome(executable_path= ChromeDriverManager().install(),options=op)
+    d_link = ''
+    while d_link == '':
+        try:
+            r = requests.get(url)
+            soup = BeautifulSoup(r.content,'html.parser')
+            anchors = soup.find_all('a')
+            link = ''
+            for a in anchors:
+                if str(a.getText()) == '✅ Fast Server (G-Drive)':
+                    link = a.get('href')
+                    break
+
+
+            driver.get(link)
+            driver.get_screenshot_as_file("screenshot.png")
+
+            btn = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="landing"]/span/a')))
+
+            btn.click()
+
+            btn2 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/section/article/span[2]")))
+
+            btn2.click()
+            sleep(10)
+
+            btn3 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/section/article/span[1]")))
+
+            btn3.click()
+
+            sleep(10)
+
+            btn4 = driver.find_element(By.ID,'two_steps_btn')
+            l = btn4.get_attribute('href')
+
+            driver.get(l)
+
+            btn5 = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div/div[2]/div[2]/button")))
+
+            btn5.click()
+
+            sleep(10)
+
+            input = driver.find_element(By.XPATH,'//*[@id="wi"]/div/input')
+            d_link = str(input.get_attribute('value'))
+        except:
+            print('Trying again!')
+    
+    return str(input.get_attribute('value'))
+
+# selenium function 
 
 def movies_types(type):
     url = f'https://api.themoviedb.org/3/movie/{type}?api_key=65b4c60e268ed91234cd5991cb97f273'
@@ -56,7 +120,9 @@ def download_movie(name,year):
     return url
 
 
-
+headers = {
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
+    }
 
 def download_link(name,year):
     title = str(name).lower()
@@ -64,7 +130,7 @@ def download_link(name,year):
     
     try:
         url = f'https://moviesmod.in/?s={t}+{year}'
-        r = requests.get(url)
+        r = requests.get(url, headers=headers)
         html = r.content
         soup = BeautifulSoup(html, 'html.parser')
         links = ''

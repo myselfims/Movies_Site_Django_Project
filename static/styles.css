@@ -9,7 +9,7 @@
 nav{
     background-color: black;
     width: 100vw;
-    z-index: 6;
+    z-index: 5;
     position: fixed;
 }
 
@@ -232,7 +232,7 @@ nav a:hover{
     right: 34em;
     top: 10em;
     bottom: auto;
-    z-index: 5;
+    z-index: 6;
     width: 30em;
     border: 3px solid white;
     border-radius: 1em;

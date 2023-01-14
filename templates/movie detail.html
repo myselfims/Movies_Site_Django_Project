@@ -81,14 +81,14 @@
 
 </div>
 <div id="trailormodal" class="trailormodal">
-    <button onclick="CloseTrailorModal()" class="btn">X</button>
+    <button style='z-index: 10;' onclick="CloseTrailorModal()" class="btn">X</button>
     <div class="trailordiv">
         <iframe id='player' width="800" height="500" src="https://www.youtube.com/embed/{{trailor.key}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 </div>
 
 <div id="downloadmodal" class="trailormodal">
-    <button onclick="HideDownloadModal()" class="btn">X</button>
+    <button style='z-index: 10;' onclick="HideDownloadModal()" class="btn">X</button>
     <div class="downloaddiv">
         {% for quality in qualities %}
         <h3>{{quality}}</h3>
