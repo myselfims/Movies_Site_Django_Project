@@ -151,7 +151,7 @@ def download_link(name,year):
         for p in proxies:
             try:
                 print(f'trying : {p}')
-                req = requests.get(url,proxies={'http':p,'https':p})
+                req = requests.get(url,proxies={'http':p,'https':p},timeout=7)
                 r = req
                 break
             except:
