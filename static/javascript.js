@@ -343,7 +343,7 @@ function CloseTrailorModal(){
     document.getElementById('contentdiv').style.filter = 'none';
     document.body.classList.remove("stop-scrolling");
     document.getElementById('player').src = '';
-    
+    document.getElementById('moviesdetailcontainer').style.filter = 'none';
 
 }
 
@@ -352,6 +352,7 @@ function ShowTrailorModal(src){
     document.getElementById('trailormodal').style.display = 'flex';
     document.body.classList.add("stop-scrolling");
     document.getElementById('contentdiv').style.filter = 'blur(15px)';
+    document.getElementById('moviesdetailcontainer').style.filter = 'blur(15px)';
 }
 
 function ShowDownloadModal(){
