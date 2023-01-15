@@ -71,18 +71,18 @@
     </div>
 
     <main>
+        <div id='animation' class="animationdiv">
+            <span id="c1" class="circle"></span>
+            <span id="c2" class="circle"></span>
+            <span id="c3" class="circle"></span>
+            <span id="c4" class="circle"></span>
+            <span id="c5" class="circle"></span>
+            <span id="c6" class="circle"></span>
+            <span id="c7" class="circle"></span>
+            <span id="c8" class="circle"></span>
+        </div>
         {% block detailtetemplatebody %}
         <div id="container" class="container">
-            <div id='animation' class="animationdiv">
-                <span id="c1" class="circle"></span>
-                <span id="c2" class="circle"></span>
-                <span id="c3" class="circle"></span>
-                <span id="c4" class="circle"></span>
-                <span id="c5" class="circle"></span>
-                <span id="c6" class="circle"></span>
-                <span id="c7" class="circle"></span>
-                <span id="c8" class="circle"></span>
-            </div>
             {% if movies %}
             {% for movie in movies %}
             

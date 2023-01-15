@@ -292,8 +292,12 @@ def movie_detail(request,id):
     trailor = get_trailor(id)
    
     
-    print(cast)
-    links,qualities = download_link(details['title'],str(details['release_date'])[:4])
+    try:
+        links,qualities = download_link(details['title'],str(details['release_date'])[:4])
+    except:
+        links = None
+        qualities = None
+        
     if request.user.is_authenticated:
         
         user = User.objects.get(username=request.user.username)
