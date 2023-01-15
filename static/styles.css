@@ -622,6 +622,10 @@ nav a:hover{
     .ratings{
         width: 14em;
     }
+    .likebtn{
+        left: 2em;
+        top: 10em;
+    }
     .postercard{
         width: 14em;
         padding: 1em;
