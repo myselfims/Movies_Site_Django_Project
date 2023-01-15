@@ -630,7 +630,9 @@ nav a:hover{
         width: 14em;
         padding: 1em;
     }
-    
+    form{
+        display: flex;
+    }
     .shortinfo{
         display: flex;
         flex-direction: column;
