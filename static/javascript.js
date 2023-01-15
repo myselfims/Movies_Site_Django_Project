@@ -39,6 +39,12 @@ function ShowModal(){
     }catch{
         document.getElementById('container').style.filter = 'blur(15px)';
     }
+    try{
+        document.getElementById('moviesdetailcontainer').style.filter = 'blur(15px)';
+
+    }catch{
+        
+    }
     document.getElementById('usernameinput').value = '';
     document.getElementById('emailinput').value = '';
     document.getElementById('passwordinput').value = '';
@@ -305,6 +311,13 @@ function CloseTrailorModal(){
     document.getElementById('contentdiv').style.filter = 'none';
     document.body.classList.remove("stop-scrolling");
     document.getElementById('player').src = '';
+    try{
+        document.getElementById('moviesdetailcontainer').style.filter = 'blur(15px)';
+
+    }catch{
+        
+    }
+
 }
 
 function ShowTrailorModal(src){
