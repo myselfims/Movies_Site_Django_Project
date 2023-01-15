@@ -22,6 +22,12 @@ function CloseModal(){
     }catch{
         document.getElementById('container').style.filter = 'none';
     }
+    try{
+        document.getElementById('moviesdetailcontainer').style.filter = 'none';
+
+    }catch{
+        
+    }
 
 }
 
@@ -311,12 +317,7 @@ function CloseTrailorModal(){
     document.getElementById('contentdiv').style.filter = 'none';
     document.body.classList.remove("stop-scrolling");
     document.getElementById('player').src = '';
-    try{
-        document.getElementById('moviesdetailcontainer').style.filter = 'blur(15px)';
-
-    }catch{
-        
-    }
+    
 
 }
 
@@ -331,12 +332,24 @@ function ShowDownloadModal(){
     document.getElementById('downloadmodal').style.display = 'flex';
     document.body.classList.add("stop-scrolling");
     document.getElementById('contentdiv').style.filter = 'blur(15px)';
+    try{
+        document.getElementById('moviesdetailcontainer').style.filter = 'blur(15px)';
+
+    }catch{
+        
+    }
 }
 
 function HideDownloadModal(){
     document.getElementById('downloadmodal').style.display = 'none';
     document.getElementById('contentdiv').style.filter = 'none';
     document.body.classList.remove("stop-scrolling");
+    try{
+        document.getElementById('moviesdetailcontainer').style.filter = 'none';
+
+    }catch{
+        
+    }
 }
 
 
