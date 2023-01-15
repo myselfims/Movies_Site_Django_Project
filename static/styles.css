@@ -144,7 +144,7 @@ nav a:hover{
     padding: 1em;
     border-radius: 1em;
     cursor: pointer;
-
+.container
 }
 .logoutdiv option{
     color: black;
@@ -402,7 +402,7 @@ nav a:hover{
 .contentdiv{
     background-color: rgba(0, 0, 0, 0.347);
     width: 70em;
-    margin-top: 2em;
+    margin-top: 4em;
     padding: 3em;
     display: flex;
     flex-direction: row;
@@ -613,6 +613,20 @@ nav a:hover{
         justify-content: center;
         margin-top: 10em;
     }
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .ratings{
+        width: 14em;
+    }
+    .postercard{
+        width: 14em;
+        padding: 1em;
+    }
+    
     .shortinfo{
         display: flex;
         flex-direction: column;

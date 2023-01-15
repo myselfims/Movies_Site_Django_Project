@@ -31,7 +31,7 @@ function ShowAnimation(){
 
 function ShowModal(){
     document.getElementById('modalcontainer').style.display = 'flex';
-    document.getElementById('sidebardiv').style.display = 'flex';
+    document.getElementById('sidebardiv').style.display = 'none';
     document.body.classList.add("stop-scrolling");
     try{
         document.getElementById('subcontainer').style.filter = 'blur(15px)';
@@ -175,11 +175,17 @@ function SubmitForm(){
             },
             
             success : function(response){
-                document.getElementById('progressbarsignup').style.display = 'none';
-                CloseModal()
+                if (response['msg']=='User created'){
+                    document.getElementById('progressbarsignup').style.display = 'none';
+                    CloseModal()
+
+                } else{
+                    alert(response['msg'])
+                }
                 
             }
         })
+
     } else if(username !== '' && email == '' && password !== ''){
         $.ajax({
             type : 'POST',
