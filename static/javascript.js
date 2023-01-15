@@ -187,9 +187,33 @@ function SubmitForm(){
             },
             
             success : function(response){
+                document.getElementById('progressbarsignup').style.display = 'none';
                 if (response['msg']=='User created'){
-                    document.getElementById('progressbarsignup').style.display = 'none';
                     CloseModal()
+                    try{
+                        document.getElementById('loginbtn').style.display = 'none';
+                    }catch{
+                        
+                    }
+
+                    var check = CheckMobile()
+                    if (check === true){
+                        
+                        document.getElementById('loginbtnmobile').style.display = 'none';
+                        document.getElementById('mobilelogoutbtn').style.display = 'flex';
+                        document.getElementById('logoutdivajax').style.display = 'none';
+                        document.getElementById('favorite').style.display = 'none';
+                        document.getElementById('favoritemobile').style.display = 'flex';
+                        document.getElementById('usernamelabelmobile').innerHTML = response['username'];
+                        
+                    } else{
+                        document.getElementById('logoutdivajax').style.display = 'flex';
+                        document.getElementById('favorite').style.display = 'flex';
+                        document.getElementById('loginbtnajax').style.display = 'none';
+                        document.getElementById('usernamelabelajax').innerHTML = response['username'];
+                        
+
+                    }
 
                 } else{
                     alert(response['msg'])
@@ -209,9 +233,9 @@ function SubmitForm(){
             },
             
             success : function(response){
-                CloseModal()
                 document.getElementById('progressbarsignup').style.display = 'none';
                 if (response['msg']==='logged in'){
+                    CloseModal()
                     try{
                         document.getElementById('loginbtn').style.display = 'none';
                     }catch{
@@ -235,17 +259,19 @@ function SubmitForm(){
                         document.getElementById('logoutdivajax').style.display = 'none';
                         document.getElementById('favorite').style.display = 'none';
                         document.getElementById('favoritemobile').style.display = 'flex';
+                        document.getElementById('usernamelabelmobile').innerHTML = response['username'];
                         
                     } else{
                         document.getElementById('logoutdivajax').style.display = 'flex';
                         document.getElementById('favorite').style.display = 'flex';
                         document.getElementById('loginbtnajax').style.display = 'none';
+                        document.getElementById('usernamelabelajax').innerHTML = response['username'];
                         
 
                     }
-                    document.getElementById('usernamelabelajax').innerHTML = response['username'];
-                    document.getElementById('usernamelabelmobile').innerHTML = response['username'];
 
+                }else{
+                    alert(response['msg'])
                 }
 
             }

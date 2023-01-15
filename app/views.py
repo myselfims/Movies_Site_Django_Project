@@ -337,12 +337,16 @@ def ajax_actions(request):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
-        if len(password) >= 8:
-            user = User.objects.create_user(username = username,email = email, password = password )
-            user.save()
-
-            return JsonResponse({'msg':'User created'})
-        return JsonResponse({'msg':'Password should be minimum 8 characters'})
+        check = User.objects.filter(username=username)
+        if len(check) > 0:
+            return JsonResponse({'msg':'User already exist!'})
+        else:
+            if len(password) >= 8:
+                user = User.objects.create_user(username = username,email = email, password = password )
+                user.save()
+                login(request,user=user)
+                return JsonResponse({'msg':'User created'})
+            return JsonResponse({'msg':'Password should be minimum 8 characters'})
     
     elif action == 'login':
         print(action)

@@ -24,12 +24,12 @@
             <a href="{%url 'top_rated' %}">Top Rated</a>
             <a href="{%url 'favorite' %}" id='favorite'>favorite</a>
             <button id="sidebarbtn" onclick="ShowSideBar()" class="btn"> <strong>☰</strong> </button>
-            <form action="{%url 'search' %}" method='post'> {% csrf_token %}
             <div class="searchdiv">
+                <form action="{%url 'search' %}" method='post'> {% csrf_token %}
                 <input name='query' placeholder = "search a movie" type="text">
                 <button class='btn'>🔍</button>
-            </div>
             </form>
+            </div>
             {% comment %} {% if user != 'none' %}
             <div id='logoutdiv' class="logoutdiv">
                 <select onchange="Logout()" name="" id="">
