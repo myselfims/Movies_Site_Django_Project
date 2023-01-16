@@ -146,7 +146,7 @@ def download_link(name,year):
     t = title.replace(' ', '+')
     
     try:
-        url = f'https://moviesmod.in/?s={t}+{year}'
+        url = f'https://moviesmod.com/?s={t}+{year}'
         r = requests.get(url, headers=headers)
         # for p in proxies:
         #     try:
@@ -205,8 +205,33 @@ def download_link(name,year):
             for l in nanchors:
                 down_links.append(l.get('href'))
                 
+            return down_links,all_qualities
         
-            
+        # Vega Movies Code
+        
+        url = f'https://vegamovies.loan/?s={t}+{year}'
+        r = requests.get(url)
+        html = r.content
+        soup = BeautifulSoup(html, 'html.parser')
+        links = ''
+        anchors = soup.find_all('a',class_='post-image post-image-left')
+        if anchors:
+            for link in anchors:
+                links= link.get('href')
+                break
+            nr = requests.get(str(links))
+            nhtml = nr.content
+            nsoup = BeautifulSoup(nhtml, 'html.parser')
+            down_links = []
+            qualities = nsoup.find_all('span',class_='ez-toc-section')
+            all_qualities = []
+            nanchors = nsoup.find_all('a',class_='maxbutton-1 maxbutton maxbutton-download-links')
+            for h in qualities:
+                all_qualities.append(h.getText())
+                    
+            for l in nanchors:
+                down_links.append(l.get('href'))
+                
             return down_links,all_qualities
         
     except:
