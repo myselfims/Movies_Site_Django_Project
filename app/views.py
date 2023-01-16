@@ -225,7 +225,7 @@ def download_link(name,year):
             down_links = []
             qualities = nsoup.find_all('span',class_='ez-toc-section')
             all_qualities = []
-            nanchors = nsoup.find_all('a',class_='maxbutton-1 maxbutton maxbutton-download-links')
+            nanchors = nsoup.find_all('a',class_='buttons btn_green')
             for h in qualities:
                 all_qualities.append(h.getText())
                     
