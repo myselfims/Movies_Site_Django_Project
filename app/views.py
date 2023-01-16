@@ -223,7 +223,7 @@ def download_link(name,year):
             nhtml = nr.content
             nsoup = BeautifulSoup(nhtml, 'html.parser')
             down_links = []
-            qualities = nsoup.find_all('span',class_='ez-toc-section')
+            qualities = nsoup.find_all('h5')
             all_qualities = []
             nanchors = nsoup.find_all('a',class_='buttons btn_green')
             for h in qualities:
