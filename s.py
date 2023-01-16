@@ -71,5 +71,3 @@ def download_link(name):
 link,qualities = download_link('dilwale 2015')
 print(qualities,link)
 
-
-// how to connect mysql?

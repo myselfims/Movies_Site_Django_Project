@@ -125,18 +125,18 @@ headers = {
     }
 
 
-proxies = [
-    'http://3.111.208.135:80',
-    'http://103.242.119.88:80',
-    'http://115.242.198.158:8080',
-    'http://103.146.170.252:83',
-    'http://183.88.223.17:8081',
-    'http://97.76.251.138:8080',
-    'http://151.64.222.230:3128',
-    'http://152.32.202.108:80',
-    'http://23.142.200.190:80',
-    'http://155.254.192.162:80	',
-]
+# proxies = [
+#     'http://3.111.208.135:80',
+#     'http://103.242.119.88:80',
+#     'http://115.242.198.158:8080',
+#     'http://103.146.170.252:83',
+#     'http://183.88.223.17:8081',
+#     'http://97.76.251.138:8080',
+#     'http://151.64.222.230:3128',
+#     'http://152.32.202.108:80',
+#     'http://23.142.200.190:80',
+#     'http://155.254.192.162:80	',
+# ]
 
 
 
@@ -148,14 +148,14 @@ def download_link(name,year):
     try:
         url = f'https://moviesmod.in/?s={t}+{year}'
         r = requests.get(url, headers=headers)
-        for p in proxies:
-            try:
-                print(f'trying : {p}')
-                req = requests.get(url,proxies={'http':p,'https':p},timeout=7)
-                r = req
-                break
-            except:
-                print('Trying again...')
+        # for p in proxies:
+        #     try:
+        #         print(f'trying : {p}')
+        #         req = requests.get(url,proxies={'http':p,'https':p},timeout=7)
+        #         r = req
+        #         break
+        #     except:
+        #         print('Trying again...')
         html = r.content
         soup = BeautifulSoup(html, 'html.parser')
         links = ''

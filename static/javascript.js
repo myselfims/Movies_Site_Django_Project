@@ -277,6 +277,8 @@ function SubmitForm(){
             }
         })
 
+    }else{
+        alert('Please fill the fields!')
     }
     
 }
