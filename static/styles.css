@@ -223,16 +223,6 @@ nav a:hover{
     cursor: pointer;
 }
 
-#mainmodaldiv{
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    background-color: transparent;
-    position: absolute;
-    top: 0;
-    justify-content: center;
-    align-items: center;
-}
 
 .modalcontainer{
     display: none;
@@ -271,6 +261,17 @@ nav a:hover{
     background-color: transparent;
     outline: none;
     color: white;
+}
+
+.mainmodaldiv{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    justify-content: center;
+    align-items: center;
 }
 
 .modalhead{
