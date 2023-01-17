@@ -37,6 +37,7 @@ function ShowAnimation(){
 }
 
 function ShowModal(){
+    document.getElementById('animation').style.display = 'none';
     document.getElementById('modalcontainer').style.display = 'flex';
     document.getElementById('mainmodaldiv').style.display = 'flex';
     document.getElementById('sidebardiv').style.display = 'none';
