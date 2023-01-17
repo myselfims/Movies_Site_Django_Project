@@ -402,18 +402,22 @@ def ajax_actions(request):
         print(action)
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
-        if user.is_authenticated:
-            login(request,user=user)
-            user = User.objects.get(username = request.user.username)
-            liked_movies = Liked_Movies.objects.filter(user=user)
-            liked_json = []
-            for l in liked_movies:
-                liked_json.append({'id':l.movie_id})
+        try:
+            user = authenticate(username=username, password=password)
+            if user.is_authenticated:
+                login(request,user=user)
+                user = User.objects.get(username = request.user.username)
+                liked_movies = Liked_Movies.objects.filter(user=user)
+                liked_json = []
+                for l in liked_movies:
+                    liked_json.append({'id':l.movie_id})
 
-            print(liked_json)
-            return JsonResponse({'msg':'logged in','username':request.user.username, 'liked':liked_json})
-        else:
+                print(liked_json)
+                return JsonResponse({'msg':'logged in','username':request.user.username, 'liked':liked_json})
+            else:
+                return JsonResponse({'msg':'usernot found'})
+       
+        except:
             return JsonResponse({'msg':'usernot found'})
         
     elif action == 'logout':

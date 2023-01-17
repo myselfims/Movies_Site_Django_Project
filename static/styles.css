@@ -223,12 +223,23 @@ nav a:hover{
     cursor: pointer;
 }
 
+#mainmodaldiv{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+}
+
 .modalcontainer{
     display: none;
     flex-direction: column;
     padding: 0em 0em 1em 0em;
     background-color: rgba(0, 0, 0, 0.413);
-    position: absolute;
+    /* position: absolute; */
     right: 34em;
     top: 10em;
     bottom: auto;
@@ -495,6 +506,7 @@ nav a:hover{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .actorinfodiv{
@@ -583,6 +595,12 @@ nav a:hover{
     .logoutdiv{
         display: none;
     }
+    #loginbtnmobile{
+        display: none;
+    }
+    #mobilelogoutbtn{
+        display: none;
+    }
     #loginbtn{
         display: none;
     }
@@ -602,7 +620,7 @@ nav a:hover{
         width: 100%;
         font-size: 0.5em;
         flex-wrap: wrap;
-        align-items: center;
+        justify-content: center;
     }
     .actorinfodiv img{
         width: 5em;
@@ -620,11 +638,13 @@ nav a:hover{
         align-items: center;
     }
     .ratings{
-        width: 14em;
+        position: none;
+        width: auto;
+        overflow: hidden;
     }
     .likebtn{
-        left: 1em;
-        top: 12em;
+        position: none;
+        margin-left: 1em;
     }
     .postercard{
         width: 14em;
@@ -686,6 +706,8 @@ nav a:hover{
         font-size: 10px;
 
     }
-
+    .downloaddiv h3{
+        margin: 0;
+    }
     
 }

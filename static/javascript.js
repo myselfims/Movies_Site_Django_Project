@@ -15,6 +15,7 @@ function CheckMobile(){
 
 function CloseModal(){
     document.getElementById('modalcontainer').style.display = 'none';
+    document.getElementById('mainmodaldiv').style.display = 'flex';
     document.body.classList.remove("stop-scrolling");
     try{
         document.getElementById('subcontainer').style.filter = 'none';
@@ -37,6 +38,7 @@ function ShowAnimation(){
 
 function ShowModal(){
     document.getElementById('modalcontainer').style.display = 'flex';
+    document.getElementById('mainmodaldiv').style.display = 'flex';
     document.getElementById('sidebardiv').style.display = 'none';
     document.body.classList.add("stop-scrolling");
     try{
@@ -91,7 +93,7 @@ var ajax_url = window.location.origin + "/site_actions/";
 // var ajax_url = "http://127.0.0.1:8000/site_actions/";
 
 function LikeMovie(id,user){
-    // document.getElementById('animation').style.display = 'flex';
+    document.getElementById('animation').style.display = 'flex';
 
     // window.document.style.cursor = 'wait';
     $.ajax({
@@ -103,7 +105,7 @@ function LikeMovie(id,user){
         },
         
         success : function(response){
-            console.log(response['msg'])
+            document.getElementById('animation').style.display = 'flex';
             // window.document.style.cursor = 'none';
             if (response['msg'] === 'liked'){
                 document.getElementById('likebtn'+id).innerHTML = '&#10084;';
