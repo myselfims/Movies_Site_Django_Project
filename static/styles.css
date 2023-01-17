@@ -225,7 +225,7 @@ nav a:hover{
 
 
 .modalcontainer{
-    display: none;
+    display: flex;
     flex-direction: column;
     padding: 0em 0em 1em 0em;
     background-color: rgba(0, 0, 0, 0.413);
