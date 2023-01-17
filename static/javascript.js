@@ -94,7 +94,6 @@ var ajax_url = window.location.origin + "/site_actions/";
 
 function LikeMovie(id,user){
     document.getElementById('animation').style.display = 'flex';
-
     // window.document.style.cursor = 'wait';
     $.ajax({
         type : 'POST',

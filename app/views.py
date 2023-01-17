@@ -310,10 +310,11 @@ def favorite(request):
         liked_movies = Liked_Movies.objects.filter(user = user)
         liked = []
         liked_list = []
-        for movie in liked_movies:
-            liked_list.append(int(movie.movie_id))
-            movie = movie_details(movie.movie_id)
-            liked.append(movie)
+        if liked_movies:
+            for movie in liked_movies:
+                liked_list.append(int(movie.movie_id))
+                movie = movie_details(movie.movie_id)
+                liked.append(movie)
                     
         print(liked_list)
         print('movies',liked)
