@@ -105,7 +105,7 @@ function LikeMovie(id,user){
         },
         
         success : function(response){
-            document.getElementById('animation').style.display = 'flex';
+            document.getElementById('animation').style.display = 'none';
             // window.document.style.cursor = 'none';
             if (response['msg'] === 'liked'){
                 document.getElementById('likebtn'+id).innerHTML = '&#10084;';
