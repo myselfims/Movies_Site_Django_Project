@@ -11,4 +11,6 @@ urlpatterns = [
     path('upcoming/',views.upcoming, name = 'upcoming'),
     path('top_rated/',views.top_rated, name = 'top_rated'),
     path('movie_detail/<str:id>',views.movie_detail, name = 'movie_detail'),
+    path('contact/',views.contact, name = 'contact'),
+    path('disclaimer/',views.disclaimer, name='disclaimer'),
 ]

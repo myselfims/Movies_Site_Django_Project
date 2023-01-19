@@ -1,0 +1,39 @@
+{% extends 'movie detail.html' %}
+
+{% block contentdivbody %}
+
+<style>
+    .container{
+        height: 100vh;
+    }
+    .castactordiv{
+        display: none;
+    }
+</style>
+
+<div class="dmcacontentdiv">
+    {% block dmcacontentdiv %}
+    <h1>Movies Junction DMCA Policy</h1>
+    <label for="">DMCA Information</label>
+    <p>
+        All parts of the moviesjunction.com website are for private use only.
+No files are hosted on our server,
+All contents are provided by non-affiliated third parties.
+they are only indexed much like how Google works.
+moviesjunction.com does not accept responsibility for content hosted on third party websites and does not have any involvement in the moviesjunction/uploading of movies .we just post links available in internet.
+
+This site merely indexes of other sites’s contents. The hosting server or the administrator cannot be held responsible for the contents of any linked sites or any link contained in a linked site, or changes / updates to such sites. All materials on this website is for Educational Purposes ONLY.
+
+For any copyright issues, you should contact the hosters files sites’s itself
+
+If you still have or need further information
+please send me PM through contact page
+
+Please allow 3-5 business days for an email response. <a href="{%url 'contact' %}">[Contact Us]</a> 
+    </p>
+    {% endblock dmcacontentdiv %}
+</div>
+
+
+
+{% endblock contentdivbody %}

@@ -386,4 +386,7 @@ function HideDownloadModal(){
     }
 }
 
+document.getElementById('subbtn').onclick = function(){
+    alert('Submitted!')
+}
 

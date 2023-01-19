@@ -25,6 +25,7 @@
             <div class="bar"></div>
         </div> {% endcomment %}
         <div id='contentdiv' class="contentdiv">
+            {% block contentdivbody %}
             <img src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt="" />
 
             <div class="moviesinfo">
@@ -66,6 +67,7 @@
                     {% endfor %}
                 </div>
             </div>
+            {% endblock contentdivbody %}
         </div>
 
         <div class="castactordiv">

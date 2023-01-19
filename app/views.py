@@ -2,7 +2,7 @@ from django.shortcuts import render
 import json
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from .models import Liked_Movies
+from .models import Liked_Movies,Message
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate,login,logout
@@ -255,7 +255,7 @@ headers = {
 
 def home(request):
     try:
-        url = f'https://api.themoviedb.org/3/trending/all/week?api_key=65b4c60e268ed91234cd5991cb97f273'
+        url = f'https://api.themoviedb.org/3/trending/movie/day?api_key=65b4c60e268ed91234cd5991cb97f273'
         r = requests.request('GET', url=url)
     except:
         return HttpResponse('Please check your internet connection!')
@@ -430,3 +430,17 @@ def ajax_actions(request):
         if request.user.is_authenticated:
             return JsonResponse({'msg':'true','username':request.user.username})
         return JsonResponse({'msg':'false'})
+    
+    
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        modal = Message(name=name,email=email,message=message)
+        modal.save()
+        return redirect('/')
+    return render(request,'contact.html')
+
+def disclaimer(request):
+    return render(request,'dmca.html')

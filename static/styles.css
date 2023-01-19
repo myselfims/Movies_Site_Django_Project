@@ -568,6 +568,71 @@ nav a:hover{
     overflow: hidden;
 }
 
+.footercontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1em;
+    background-color: rgb(14, 14, 14);
+    color: white;
+
+}
+
+.footerlinks a{
+    text-decoration: none;
+    color: white;
+    margin: 1em;
+}
+.footerlinks a:hover{
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.669);
+}
+
+.dmcacontentdiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    overflow: hidden;
+}
+.contactdiv{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+}
+
+.contactform{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.input{
+    width: 40%;
+    font-size: 1em;
+    padding: 0.5em;
+    outline: none;
+    border-radius: 0.5em;
+
+}
+
+textarea{
+    padding: 0.5em;
+    margin: 1em;
+}
+
+
+
+
+
+
+
+
+
 
 /* CSS FOR RESPONSIVENESS */
 
@@ -713,5 +778,10 @@ nav a:hover{
     .downloaddiv h3{
         margin: 0;
     }
+    .footercontainer{
+        font-size: 0.6em;
+    }
     
 }
+
+

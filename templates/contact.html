@@ -1,0 +1,27 @@
+{% extends 'dmca.html' %}
+
+
+{% block dmcacontentdiv %}
+
+<div class="contactdiv">
+    {% if msg %}
+
+    {% endif %}
+    <h1>Contact Us</h1>
+    <form action="{%url 'contact' %}" method='post'> {% csrf_token%}
+    <div class="contactform">
+        <label for="">Name (Required)</label>
+        <input name='name' placeholder='Name' class='input' required type="text">
+
+        <label for="">Email (Required)</label>
+        <input name='email' placeholder='Email' class='input' required type="email">
+
+        <label for="">Message (Required)</label>
+        <textarea placeholder='Type your message.' name="message" id="" cols="50" rows="10"></textarea>
+
+        <button type='submit' id='subbtn' class='btn'>Submit</button>
+    </div>
+</form>
+</div>
+
+{% endblock dmcacontentdiv %}
