@@ -26,7 +26,7 @@
             <button id="sidebarbtn" onclick="ShowSideBar()" class="btn"> <strong>☰</strong> </button>
             <div class="searchdiv">
                 <form action="{%url 'search' %}" method='post'> {% csrf_token %}
-                <input name='query' placeholder = "search a movie" type="text">
+                <input required name='query' placeholder = "search a movie" type="text">
                 <button class='btn'>🔍</button>
             </form>
             </div>
@@ -98,7 +98,7 @@
                         <button onclick="LikeMovie('{{movie.id}}','{{user}}')" class='likebtn' id="likebtn{{movie.id}}">&#9825;</button>
                         {% endif %}
                     </div>
-                    <a onclick='ShowAnimation()' class='movietitleheading' href="{%url 'movie_detail' id=movie.id %}">   
+                    <a class='movietitleheading' href="{%url 'movie_detail' id=movie.id %}">   
                     <img src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt="Poster">
                     <h1>{{movie.title}} {{movie.year}}</h1>
                     <p>{{movie.description}}</p>

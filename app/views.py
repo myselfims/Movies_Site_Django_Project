@@ -20,7 +20,7 @@ from selenium.webdriver.support import expected_conditions as EC
 # Create your views here.
 
 
-
+headers={"User-Agent": "Mozilla/5.0 (iPad; CPU OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148"}
 # selenium function 
 
 def direct_download(url):
@@ -120,9 +120,9 @@ def download_movie(name,year):
     return url
 
 
-headers = {
-        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
-    }
+# headers = {
+#         'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
+#     }
 
 
 # proxies = [
