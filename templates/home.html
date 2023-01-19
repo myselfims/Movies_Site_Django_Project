@@ -11,18 +11,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <title>Movies Junction</title>
 </head>
+{% block style %}
 
+<style>
+    #homeanchor{
+        color:rgba(255, 255, 255, 0.587)
+    }
+</style>
+
+{% endblock style %}
 <body onload='CheckLogin()'>
     <nav>
         <div class="nav">
             <div class="logodiv">
                 <a href="/"><img id="logo" src="{%static 'MoviesJunctionLogo3.png' %}" alt="logo"></a>
             </div>
-            <a href="/">Home</a>
-            <a href="{%url 'popular' %}">Popular</a>
-            <a href="{%url 'upcoming' %}">Upcoming</a>
-            <a href="{%url 'top_rated' %}">Top Rated</a>
-            <a href="{%url 'favorite' %}" id='favorite'>favorite</a>
+            <a id='homeanchor' href="/">Home</a>
+            <a id='popularanchor' href="{%url 'popular' %}">Popular</a>
+            <a id='upcominganchor' href="{%url 'upcoming' %}">Upcoming</a>
+            <a id='topratedanchor' href="{%url 'top_rated' %}">Top Rated</a>
+            <a id='favoriteanchor' href="{%url 'favorite' %}" id='favorite'>favorite</a>
             <button id="sidebarbtn" onclick="ShowSideBar()" class="btn"> <strong>☰</strong> </button>
             <div class="searchdiv">
                 <form action="{%url 'search' %}" method='post'> {% csrf_token %}
