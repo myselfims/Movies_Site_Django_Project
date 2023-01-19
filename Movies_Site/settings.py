@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -135,8 +135,8 @@ USE_TZ = True
 
 url = 'https://moviesjunction.onrender.com/'
 
-# STATIC_URL = url + 'static/'
-STATIC_URL = 'static/' # For development
+STATIC_URL = url + 'static/' # For Production
+# STATIC_URL = 'static/' # For development
 
 
 STATIC_ROOT = os.path.join(BASE_DIR / "static")
