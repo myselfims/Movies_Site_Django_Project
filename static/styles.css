@@ -534,7 +534,7 @@ nav a:hover{
 .trailormodal{
     display: none;
     flex-direction: column;
-    padding: 0em 0em 1em 0em;
+    padding: 3em 0em 1em 0em;
     background-color: rgba(0, 0, 0, 0.413);
     position: absolute;
     top: 0;
@@ -552,6 +552,9 @@ nav a:hover{
     justify-content: center;
     margin: 2em;
     flex-direction: column;
+    overflow-y: scroll;
+    padding-top: 5em;
+    
 }
 
 .downloaddiv h3{
