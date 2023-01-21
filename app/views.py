@@ -214,7 +214,9 @@ def download_link(name,year):
                     down_links.append(l.get('href'))
                     
                 
-                return down_links,all_qualities
+                if len(down_links) and len(all_qualities) > 0:
+                    print('yes')
+                    return down_links,all_qualities
             except: 
                 pass
         
@@ -244,7 +246,9 @@ def download_link(name,year):
                 for l in nanchors:
                     down_links.append(l.get('href'))
                     
-                return down_links,all_qualities
+                if len(down_links) and len(all_qualities) > 0:
+                    print('yes')
+                    return down_links,all_qualities
             except:
                 pass
         
@@ -273,7 +277,9 @@ def download_link(name,year):
             for l in nanchors:
                 down_links.append(l.get('href'))
                 
-            return down_links,all_qualities
+            if len(down_links) and len(all_qualities) > 0:
+                    print('yes')
+                    return down_links,all_qualities
         
     except:
         return None,None
