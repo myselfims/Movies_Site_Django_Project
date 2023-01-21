@@ -34,7 +34,7 @@
             <button id="sidebarbtn" onclick="ShowSideBar()" class="btn"> <strong>☰</strong> </button>
             <div class="searchdiv">
                 <form action="{%url 'search' %}" method='post'> {% csrf_token %}
-                <input required name='query' placeholder = "search a movie" type="text">
+                <input onclick="function(){document.getElementById('sidebardiv').style.display = 'none';" required name='query' placeholder = "search a movie" type="text">
                 <button class='btn'>🔍</button>
             </form>
             </div>
