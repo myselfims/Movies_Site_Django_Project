@@ -164,7 +164,7 @@ function Logout(){
 
                 }
                 document.getElementById('logoutdivajax').style.display = 'none';
-                document.getElementById('favorite').style.display = 'none';
+                document.getElementById('favoriteanchor').style.display = 'none';
 
             }
             
@@ -205,13 +205,13 @@ function SubmitForm(){
                         document.getElementById('loginbtnmobile').style.display = 'none';
                         document.getElementById('mobilelogoutbtn').style.display = 'flex';
                         document.getElementById('logoutdivajax').style.display = 'none';
-                        document.getElementById('favorite').style.display = 'none';
+                        document.getElementById('favoriteanchor').style.display = 'none';
                         document.getElementById('favoritemobile').style.display = 'flex';
                         document.getElementById('usernamelabelmobile').innerHTML = response['username'];
                         
                     } else{
                         document.getElementById('logoutdivajax').style.display = 'flex';
-                        document.getElementById('favorite').style.display = 'flex';
+                        document.getElementById('favoriteanchor').style.display = 'flex';
                         document.getElementById('loginbtnajax').style.display = 'none';
                         document.getElementById('usernamelabelajax').innerHTML = response['username'];
                         
@@ -260,13 +260,13 @@ function SubmitForm(){
                         document.getElementById('loginbtnmobile').style.display = 'none';
                         document.getElementById('mobilelogoutbtn').style.display = 'flex';
                         document.getElementById('logoutdivajax').style.display = 'none';
-                        document.getElementById('favorite').style.display = 'none';
+                        document.getElementById('favoriteanchor').style.display = 'none';
                         document.getElementById('favoritemobile').style.display = 'flex';
                         document.getElementById('usernamelabelmobile').innerHTML = response['username'];
                         
                     } else{
                         document.getElementById('logoutdivajax').style.display = 'flex';
-                        document.getElementById('favorite').style.display = 'flex';
+                        document.getElementById('favoriteanchor').style.display = 'flex';
                         document.getElementById('loginbtnajax').style.display = 'none';
                         document.getElementById('usernamelabelajax').innerHTML = response['username'];
                         
@@ -317,7 +317,7 @@ function CheckLogin(){
                 } else{
                     document.getElementById('loginbtnajax').style.display = 'none';
                     document.getElementById('logoutdivajax').style.display = 'flex';
-                    document.getElementById('favorite').style.display = 'flex';
+                    document.getElementById('favoriteanchor').style.display = 'flex';
 
                 }
 
@@ -334,7 +334,7 @@ function CheckLogin(){
                     
                 } else{
                     document.getElementById('loginbtnajax').style.display = 'flex';
-                    document.getElementById('favorite').style.display = 'none';
+                    document.getElementById('favoriteanchor').style.display = 'none';
 
                 }
             }
