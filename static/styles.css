@@ -164,7 +164,7 @@ nav a:hover{
     background-color: rgb(36, 36, 36);
     width: 100vw;
     padding: auto;
-    margin-top: 3em;
+    margin-top: 5em;
     position: relative;
 }
 
@@ -550,7 +550,7 @@ nav a:hover{
     color: white;
 }
 
-..trailormodal button{
+.trailormodal button{
     overflow: hidden;
 }
 
