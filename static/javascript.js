@@ -80,9 +80,11 @@ function ShowSideBar(){
     if (sidebar === false){
         document.getElementById('sidebardiv').style.display = 'flex';
         document.getElementById('sidebarbtn').style.backgroundColor = 'aqua';
+        document.getElementsByClassName('container')[0].style.filter = 'blur(15px)';
         sidebar = true
     } else {
         document.getElementById('sidebardiv').style.display = 'none';
+        document.getElementsByClassName('container')[0].style.filter = 'none';
         document.getElementById('sidebarbtn').style.backgroundColor = 'black';
         sidebar = false
 
