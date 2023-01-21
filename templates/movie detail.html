@@ -105,12 +105,14 @@
     <button style='z-index: 10;' onclick="HideDownloadModal()" class="btn">X</button>
     <div class="downloaddiv">
         {% for quality in qualities %}
+        <div class="downlinksdiv">
         <h3>{{quality}}</h3>
         {% for link in downloadlinks %}
         {% if forloop.counter0 == forloop.parentloop.counter0 %}
         <a target="_blank"  href="{{link}}"><button class='btn' >Download</button></a>
         {% endif %}
         {% endfor %}
+        </div>
         {% endfor %}
     </div>
 </div>

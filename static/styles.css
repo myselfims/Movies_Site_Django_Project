@@ -550,14 +550,23 @@ nav a:hover{
     color: white;
 }
 
+..trailormodal button{
+    overflow: hidden;
+}
+
 .downloaddiv{
     display: flex;
     justify-content: center;
     margin: 2em;
-    flex-direction: column;
+    /* flex-direction: column; */
     overflow-y: scroll;
     padding-top: 5em;
+    flex-wrap: wrap;
     
+}
+.downlinksdiv{
+    height: 30vh;
+    overflow: hidden;
 }
 
 .downloaddiv h3{
@@ -736,6 +745,7 @@ textarea{
     .trailormodal button {
         margin: 1em;
         font-size: 15px;
+        overflow: hidden;
     }
     .castactordiv{
         margin: 0;

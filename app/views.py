@@ -146,6 +146,7 @@ def download_link(name,year):
     t = title.replace(' ', '+')
     t = t.replace('.', '')
     t = t.replace(':', '')
+    t = title.replace('_',' ')
     
     print(t,year)
     try:
@@ -180,7 +181,7 @@ def download_link(name,year):
                 for l in nanchors:
                     if 'DIRECT [ G-DRIVE ]'.lower() in str(l.getText()).lower():
                         down_links.append(l.get('href'))
-                print(down_links,all_qualities)
+                        
                 if len(down_links) and len(all_qualities) > 0:
                     print('yes')
                     return down_links,all_qualities
@@ -274,11 +275,11 @@ def download_link(name,year):
             down_links = []
             qualities = nsoup.find_all('h5')
             all_qualities = []
-            nanchors = nsoup.find_all('a',class_='buttons btn_green center')
+            nanchors = nsoup.find_all('a',class_='buttons btn_green')
             print('vega working..')
             for h in qualities:
                 all_qualities.append(h.getText())
-            print(nanchors)       
+            # print(nanchors)       
             for l in nanchors:
                 print(l.get('href'))
                 down_links.append(l.get('href'))
