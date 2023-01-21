@@ -187,25 +187,26 @@ def download_link(name,year):
             except:
                 pass
         # Bolly4u.com code
-        
-        url = f'https://moviesmod.com/?s={t}+{year}'
+  
+        url = f'https://worldfree4u.gold/?s={t}+{year}'
         r = requests.get(url, headers=headers)
         html = r.content
         soup = BeautifulSoup(html, 'html.parser')
         links = ''
-        anchors = soup.find_all('a',class_='post-image post-image-left')
+        anchors = soup.find_all('a',class_='cursor-pointer overflow-hidden group block shadow-sm')
         if anchors:
             try:
                 for link in anchors:
-                    links= link.get('href')
-                    break
+                    if '1080p' or '720p' in str(link.getText()):
+                        links= link.get('href')
+                        break
                 nr = requests.get(str(links))
                 nhtml = nr.content
                 nsoup = BeautifulSoup(nhtml, 'html.parser')
                 down_links = []
                 qualities = nsoup.find_all('h4')
                 all_qualities = []
-                nanchors = nsoup.find_all('a',class_='maxbutton-1 maxbutton maxbutton-download-links')
+                nanchors = nsoup.find_all('a',class_='dl2')
                 for h in qualities:
                     if 'download' in str(h.getText()).lower():
                         all_qualities.append(h.getText())
@@ -254,6 +255,7 @@ def download_link(name,year):
         
         # Vega Movies Code
         
+        print('vega movies')
         url = f'https://vegamovies.loan/?s={t}+{year}'
         r = requests.get(url)
         html = r.content
@@ -261,7 +263,9 @@ def download_link(name,year):
         links = ''
         anchors = soup.find_all('a',class_='post-image post-image-left')
         if anchors:
+            
             for link in anchors:
+                print(link.get('href'))
                 links= link.get('href')
                 break
             nr = requests.get(str(links))
@@ -270,11 +274,13 @@ def download_link(name,year):
             down_links = []
             qualities = nsoup.find_all('h5')
             all_qualities = []
-            nanchors = nsoup.find_all('a',class_='buttons btn_green')
+            nanchors = nsoup.find_all('a',class_='buttons btn_green center')
+            print('vega working..')
             for h in qualities:
                 all_qualities.append(h.getText())
-                    
+            print(nanchors)       
             for l in nanchors:
+                print(l.get('href'))
                 down_links.append(l.get('href'))
                 
             if len(down_links) and len(all_qualities) > 0:
