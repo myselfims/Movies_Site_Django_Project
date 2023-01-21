@@ -360,7 +360,7 @@ function ShowTrailorModal(src){
 
 function ShowDownloadModal(){
     document.getElementById('downloadmodal').style.display = 'flex';
-    document.getElementsByClassName('nav').style.display = 'none';
+    document.getElementById('nav').style.display = 'none';
     document.body.classList.add("stop-scrolling");
     document.getElementsByTagName('body')[0].style.overflow = 'auto';
     document.getElementById('contentdiv').style.filter = 'blur(15px)';
@@ -375,7 +375,7 @@ function ShowDownloadModal(){
 function HideDownloadModal(){
     document.getElementById('downloadmodal').style.display = 'none';
     document.getElementById('contentdiv').style.filter = 'none';
-    document.getElementsByClassName('nav').style.display = 'flex';
+    document.getElementById('nav').style.display = 'flex';
     document.getElementsByTagName('body')[0].style.overflow = 'hidden';
     document.body.classList.remove("stop-scrolling");
     try{

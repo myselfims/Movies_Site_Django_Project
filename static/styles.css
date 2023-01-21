@@ -5,6 +5,9 @@
     font-family: 'Varela Round', sans-serif;
 }
 
+body::-webkit-scrollbar{
+    display: none;
+  }
 
 nav{
     background-color: black;
