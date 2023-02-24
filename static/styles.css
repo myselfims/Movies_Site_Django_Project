@@ -170,7 +170,7 @@ nav a:hover{
 
 .postercard{
     display: inline-block;
-    width: 18em;
+    width: 17em;
     height: auto;
     border: 3px solid black;
     margin: 2em;
@@ -212,7 +212,7 @@ nav a:hover{
     align-items: center;
     position: absolute;
     justify-content: center;
-    width: 16em;
+    width: 15em;
     padding: 1em;
    
 }
